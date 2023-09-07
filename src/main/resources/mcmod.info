@@ -1,0 +1,19 @@
+[
+    {
+        "modid": "mo",
+        "name": "Matter Megadrive",
+        "description": "A mod that dwells within matter and energy.",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "https://github.com/Ionaru/MatterMegadrive",
+        "authorList": [
+            "Simeon Radivoev",
+            "Ionaru"
+        ],
+        "logoFile": "/MatterMegadriveLogo.png",
+        "requiredMods": [
+            "Forge",
+            "CoFHLib"
+        ]
+    }
+]

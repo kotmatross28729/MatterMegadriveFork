@@ -1,0 +1,46 @@
+*.class
+
+# Resources #
+*.psd
+*.wav
+*.mp3
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+run/
+logs/
+
+# Windows
+thumbs.db
+
+# Mac
+.DS_Store
+
+# Gradle
+.gradle/
+build/
+ 
+# Eclipse
+eclipse/
+.settings/
+.metdata/
+.classpath/
+.project/
+bin/
+
+# VSCode
+.vscode/
+ 
+# IntelliJ
+out/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Java
+*.hprof
+/.classpath
+/.project
+/gradle-app.setting

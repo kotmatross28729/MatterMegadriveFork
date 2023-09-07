@@ -1,0 +1,9 @@
+<entry stylesheet="mo:info/styles/guide.css">
+    <page class="padded-page">
+        <text class="matter-text text-block">$itemName is the only source of [item name=tritanium_ingot].</text>
+        <depth min="0" max="64"></depth>
+        <text class="matter-text text-block">It can be found below Y level of 64 and can be mined by any mining
+            instrument including the [item name=omni_tool].
+        </text>
+    </page>
+</entry>

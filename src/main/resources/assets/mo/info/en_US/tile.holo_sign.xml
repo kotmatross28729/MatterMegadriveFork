@@ -1,0 +1,24 @@
+<entry stylesheet="mo:info/styles/guide.css">
+    <page class="padded-page">
+        <title size="2" class="matter-text small-title">$itemName</title>
+        <text class="matter-text text-block">The $itemName acts similarly to the Vanilla Minecraft Signs. When placed
+            beside another $itemName (horizontally), it will connect with them and allow you to write text with no
+            margin spaces between the signs.
+        </text>
+        <image style="float:left;margin-right:4px" width="90" height="90" src="guide/sign_small.png"></image>
+        <image width="158" height="90" src="guide/sign_wide.png"></image>
+    </page>
+    <page class="padded-page">
+        <title size="2" class="matter-text small-title">How to use</title>
+        <text class="matter-text text-block">The $itemName sign is a multi-line sign.
+            In the configurations panel you can choose if each line has a automatic size based on it’s length, or if it
+            has a line length maximum and all other lines have the same size.
+        </text>
+        <image style="margin-right:4px;float:left" width="64" height="64" src="guide/sign_configs.png"></image>
+        <image style="margin-right:4px;float:left" width="64" height="64" src="guide/sign_small.png"></image>
+        <image style="margin-right:4px" width="64" height="64" src="guide/sign_small_none_autosize.png"></image>
+    </page>
+    <page class="padded-page">
+        <recipe></recipe>
+    </page>
+</entry>

@@ -1,0 +1,601 @@
+{
+  "phaser_beam_0": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "phaser/phaser_beam_0",
+        "stream": false
+      }
+    ]
+  },
+  "phaser_beam_1": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "phaser/phaser_beam_1",
+        "stream": false
+      }
+    ]
+  },
+  "phaser_switch_mode": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "phaser/phaser_switch_mode",
+        "stream": false
+      }
+    ]
+  },
+  "scanner_beep": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "matter_scanner/scanner_beep",
+        "stream": false
+      }
+    ]
+  },
+  "scanner_success": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "matter_scanner/scanner_success_2",
+        "stream": false
+      }
+    ]
+  },
+  "scanner_fail": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "matter_scanner/scanner_fail",
+        "stream": false
+      }
+    ]
+  },
+  "scanner_scanning": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "matter_scanner/scanner_scanning",
+        "stream": false
+      }
+    ]
+  },
+  "replicate_success": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "replicator/replicate_success",
+        "stream": false
+      }
+    ]
+  },
+  "analyzer": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "blocks/analyzer",
+        "stream": false
+      }
+    ]
+  },
+  "decomposer": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "blocks/decomposer",
+        "stream": false
+      }
+    ]
+  },
+  "machine": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "blocks/machine",
+        "stream": false
+      }
+    ]
+  },
+  "transporter": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "transporter/transporter_0",
+        "stream": false
+      }
+    ]
+  },
+  "transporter_0": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "transporter/transporter_1",
+        "stream": false
+      }
+    ]
+  },
+  "transporter_1": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "transporter/transporter_2",
+        "stream": false
+      }
+    ]
+  },
+  "transporter_2": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "transporter/transporter_3",
+        "stream": false
+      }
+    ]
+  },
+  "windy": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "windy",
+        "stream": false
+      }
+    ]
+  },
+  "anomaly_consume": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "gravitational_anomaly/consume",
+        "stream": false
+      }
+    ]
+  },
+  "electric_machine": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "electric_machine",
+        "stream": false
+      }
+    ]
+  },
+  "force_field": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "force_field",
+        "stream": false
+      }
+    ]
+  },
+  "failed_animal_die_0": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "entities/failed_animal_die_0",
+        "stream": false
+      }
+    ]
+  },
+  "failed_animal_die_1": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "entities/failed_animal_die_1",
+        "stream": false
+      }
+    ]
+  },
+  "failed_animal_idle_chicken": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "entities/failed_animal_idle_chicken",
+        "stream": false
+      }
+    ]
+  },
+  "failed_animal_idle_pig": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "entities/failed_animal_idle_pig",
+        "stream": false
+      }
+    ]
+  },
+  "failed_animal_idle_cow": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "entities/failed_animal_idle_cow",
+        "stream": false
+      }
+    ]
+  },
+  "failed_animal_idle_sheep": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "entities/failed_animal_idle_sheep",
+        "stream": false
+      }
+    ]
+  },
+  "gui.button_soft": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "gui/button_soft_0",
+        "stream": false
+      },
+      {
+        "name": "gui/button_soft_1",
+        "stream": false
+      }
+    ]
+  },
+  "gui.button_loud": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "gui/button_loud_0",
+        "stream": false
+      },
+      {
+        "name": "gui/button_loud_1",
+        "stream": false
+      }
+    ]
+  },
+  "gui.button_expand": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "gui/button_expand",
+        "stream": false
+      }
+    ]
+  },
+  "gui.biotic_stat_unlock": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "gui/biotic_stat_unlock",
+        "stream": false
+      }
+    ]
+  },
+  "transformation_music": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "music/transformation_music",
+        "stream": true
+      }
+    ]
+  },
+  "gui.glitch": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "gui/glitch_0",
+        "stream": false
+      },
+      {
+        "name": "gui/glitch_1",
+        "stream": false
+      },
+      {
+        "name": "gui/glitch_2",
+        "stream": false
+      },
+      {
+        "name": "gui/glitch_3",
+        "stream": false
+      },
+      {
+        "name": "gui/glitch_4",
+        "stream": false
+      },
+      {
+        "name": "gui/glitch_5",
+        "stream": false
+      },
+      {
+        "name": "gui/glitch_6",
+        "stream": false
+      },
+      {
+        "name": "gui/glitch_7",
+        "stream": false
+      },
+      {
+        "name": "gui/glitch_8",
+        "stream": false
+      },
+      {
+        "name": "gui/glitch_9",
+        "stream": false
+      },
+      {
+        "name": "gui/glitch_10",
+        "stream": false
+      }
+    ]
+  },
+  "android_teleport": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "entities/android_teleport",
+        "stream": false
+      }
+    ]
+  },
+  "shield_loop": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "shield_loop",
+        "stream": true
+      }
+    ]
+  },
+  "shield_hit": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "shield_hit_0",
+        "stream": false
+      },
+      {
+        "name": "shield_hit_1",
+        "stream": false
+      }
+    ]
+  },
+  "cloak_on": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "entities/cloak_on",
+        "stream": false
+      }
+    ]
+  },
+  "cloak_off": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "entities/cloak_off",
+        "stream": false
+      }
+    ]
+  },
+  "phaser_rifle_shot": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "weapon/phaser_rifle_shot",
+        "stream": false
+      }
+    ]
+  },
+  "overheat_alarm": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "weapon/overheat_alarm",
+        "stream": false
+      }
+    ]
+  },
+  "overheat": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "weapon/overheat_med",
+        "stream": false
+      }
+    ]
+  },
+  "reload": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "weapon/reload",
+        "stream": false
+      }
+    ]
+  },
+  "night_vision": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "night_vision",
+        "stream": false
+      }
+    ]
+  },
+  "power_down": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "power_down",
+        "stream": false
+      }
+    ]
+  },
+  "bolt_hit_0": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "weapon/bolt_hit_0",
+        "stream": false
+      }
+    ]
+  },
+  "sizzle": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "weapon/sizzle",
+        "stream": false
+      }
+    ]
+  },
+  "omni_tool_hum": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "weapon/omni_tool_hum",
+        "stream": false
+      }
+    ]
+  },
+  "crate_open": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "blocks/crate_open",
+        "stream": false
+      }
+    ]
+  },
+  "crate_close": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "blocks/crate_close",
+        "stream": false
+      }
+    ]
+  },
+  "laser_ricochet": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "weapon/laser_ricochet_0",
+        "stream": false
+      },
+      {
+        "name": "weapon/laser_ricochet_1",
+        "stream": false
+      }
+    ]
+  },
+  "laser_fire_0": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "weapon/laser_fire_0",
+        "stream": false
+      }
+    ]
+  },
+  "quest_complete": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "gui/quest_complete",
+        "stream": false
+      }
+    ]
+  },
+  "quest_started": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "gui/quest_started",
+        "stream": false
+      }
+    ]
+  },
+  "plasma_shotgun_shot": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "weapon/plasma_shotgun_shot",
+        "stream": false
+      }
+    ]
+  },
+  "plasma_shotgun_charging": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "weapon/plasma_shotgun_charging",
+        "stream": false
+      }
+    ]
+  },
+  "sniper_rifle_fire": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "weapon/sniper_rifle_fire",
+        "stream": false
+      }
+    ]
+  },
+  "shield_power_up": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "shield_power_up",
+        "stream": false
+      }
+    ]
+  },
+  "shield_power_down": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "shield_power_up",
+        "stream": false
+      }
+    ]
+  },
+  "rogue_android_say": {
+    "category": "hostile",
+    "sounds": [
+      {
+        "name": "entities/rogue_android_say_0",
+        "stream": false
+      },
+      {
+        "name": "entities/rogue_android_say_1",
+        "stream": false
+      },
+      {
+        "name": "entities/rogue_android_say_2",
+        "stream": false
+      }
+    ]
+  },
+  "rogue_android_death": {
+    "category": "hostile",
+    "sounds": [
+      {
+        "name": "entities/rogue_android_death_0",
+        "stream": false
+      },
+      {
+        "name": "entities/rogue_android_death_1",
+        "stream": false
+      }
+    ]
+  },
+  "shockwave": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "shockwave",
+        "stream": false
+      }
+    ]
+  }
+}

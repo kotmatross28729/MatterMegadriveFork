@@ -1,0 +1,66 @@
+package matteroverdrive.gui.element;
+
+import matteroverdrive.container.IButtonHandler;
+import matteroverdrive.gui.MOGuiBase;
+import net.minecraft.client.Minecraft;
+import org.lwjgl.opengl.GL11;
+
+public class ElementStates extends MOElementButtonScaled {
+    String[] states;
+    int selectedState;
+    String label;
+
+    public ElementStates(MOGuiBase gui, IButtonHandler buttonHandler, int posX, int posY, String name, String[] states) {
+        super(gui, buttonHandler, posX, posY, name, 0, 0);
+        this.name = name;
+        this.states = states;
+        this.sizeY = Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT + 10;
+        for (int i = 0; i < states.length; i++) {
+            if (this.sizeX < Minecraft.getMinecraft().fontRenderer.getStringWidth(states[i])) {
+                this.sizeX = Minecraft.getMinecraft().fontRenderer.getStringWidth(states[i]);
+            }
+        }
+        this.sizeX += 16;
+    }
+
+    public String[] getStates() {
+        return states;
+    }
+
+    public void setStates(String[] states) {
+        this.states = states;
+    }
+
+    public void setSelectedState(int selectedState) {
+        this.selectedState = selectedState;
+        this.text = states[selectedState];
+    }
+
+    @Override
+    public void drawForeground(int mouseX, int mouseY) {
+        super.drawForeground(mouseX, mouseY);
+        GL11.glColor4d(1, 1, 1, 1);
+        GL11.glEnable(GL11.GL_ALPHA_TEST);
+        GL11.glAlphaFunc(GL11.GL_GREATER, 0.5f);
+        GL11.glCullFace(GL11.GL_BACK);
+        int width = getFontRenderer().getStringWidth(label);
+        getFontRenderer().drawString(label, posX + sizeX + 4, posY - getFontRenderer().FONT_HEIGHT / 2 + sizeY / 2, getTextColor());
+    }
+
+    @Override
+    public void onAction(int mouseX, int mouseY, int mouseButton) {
+        selectedState++;
+        if (selectedState >= states.length)
+            selectedState = 0;
+
+        if (selectedState < states.length)
+            text = states[selectedState];
+
+
+        buttonHandler.handleElementButtonClick(this, name, selectedState);
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+}
