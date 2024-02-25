@@ -1,109 +1,27 @@
 repositories {
-	ivy {
-		name "CoFHLib"
-		artifactPattern "https://media.forgecdn.net/files/2243/944/[module]-[revision].[ext]"
-	}
-	ivy {
-		name "CoFHCore"
-		artifactPattern 'https://media.forgecdn.net/files/2244/285/[module]-[revision].[ext]'
-	}
-	ivy {
-		name "ThermalFoundation"
-		artifactPattern "https://media.forgecdn.net/files/2243/149/[module]-[revision].[ext]"
-	}
-	ivy {
-		name "ThermalExpansion"
-		artifactPattern "https://media.forgecdn.net/files/2233/797/[module]-[revision].[ext]"
-	}
-
-	ivy {
-		name "ThermalDynamics"
-		artifactPattern "https://media.forgecdn.net/files/2244/301/[module]-[revision].[ext]"
-	}
-
-	ivy {
-		name "ExtraUtilities"
-		artifactPattern "https://media.forgecdn.net/files/2242/27/[module]-[revision].[ext]"
-	}
-
-    ivy {
-        name "AppliedEnergistics2"
-        artifactPattern "https://ae-mod.info/builds/[module]-[revision]-dev.[ext]"
-    }
-
-    ivy {
-		name "BuildCraft"
-		artifactPattern "https://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision]-[classifier].[ext]"
-	}
-
-	//maven repos
-	maven {
-		name "ChickenBones"
-		url "https://chickenbones.net/maven/"
-	}
-
-	maven {
-		name "tterrag"
-		url "https://maven.tterrag.com"
-	}
-
-	maven {
-		name "IC2 and Forestry" // Forestry is required by EnderIO
-		url "https://maven.ic2.player.to"
-	}
-
-	maven {
-		name "OpenComputers"
-		url "https://maven.cil.li"
-	}
-/*
-	maven {
-		name "FireBall API Depot"
-		url "https://dl.tsr.me/artifactory/libs-release-local"
-	}
-
-	maven  {
-		name = "RX14 Proxy"
-		url = "https://mvn.rx14.co.uk/repo/"
-	}
-*/
-	maven {
-		name = "MM repo"
-		url = "https://maven.k-4u.nl/"
-	}
-  maven {
-    name "Modmaven"
-    url "https://modmaven.dev/"
+    flatDir {
+        dirs 'libs'
     }
 }
 
 dependencies {
-	// Chicken Bones
-	compile group: 'codechicken', name: 'ForgeMultipart', version: "${config.mc_version}-${config.fmp_version}", classifier: 'dev'
-	compile group: 'codechicken', name: 'CodeChickenLib', version: "${config.mc_version}-${config.ccl_version}", classifier: 'dev' // Forge http://files.minecraftforge.net/CodeChickenLib/
-	compile group: 'codechicken', name: 'CodeChickenCore', version: "${config.mc_version}-${config.ccc_version}", classifier: 'dev' // CB maven
-	compile group: 'codechicken', name: 'NotEnoughItems', version: "${config.mc_version}-${config.nei_version}", classifier: 'dev' // CB maven
+    compileOnly name: 'ForgeMultipart-1.4.8-dev'
+    compileOnly name: 'endercore-0.3.1-dev'
+    compileOnly name: 'EnderIO-2.6.6-dev'
+    compileOnly name: 'OpenComputers-1.10.6-GTNH-dev'
+    compileOnly name: 'appliedenergistics2-rv3-beta-324-GTNH-dev'
+    compileOnly name: 'CodeChickenLib-1.2.1-dev'
+    compileOnly name: 'CodeChickenCore-1.2.1-dev'
+    compileOnly name: 'NotEnoughItems-2.5.18-GTNH-dev'
+    compileOnly name: 'Waila-1.7.0-dev'
+    compileOnly name: 'extrautilities-1.2.12'
+    compileOnly name: 'ThermalExpansion-[1.7.10]4.1.5-248-dev'
+    compileOnly name: 'ThermalDynamics-[1.7.10]1.2.1-172-dev'
+    compileOnly name: 'ThermalFoundation-[1.7.10]1.2.6-118-dev'
+    compileOnly name: 'CoFHCore-[1.7.10]3.1.4-329-dev'
+    compileOnly name: 'CoFHLib-[1.7.10]1.2.1-185-dev'
 
-	// WAILA
-	compile group: 'mcp.mobius.waila', name: 'Waila', version: "${config.waila_version}_${config.mc_version}", classifier: 'dev'
+    compileOnly fileTree(dir: 'libs', include: '*.jar')
+    compileOnly fileTree(dir: 'libs', include: '*.zip')
 
-	// CoFH
-	compile group: 'cofh', name: 'CoFHLib', version: "[${config.mc_version}]${config.cofh_lib_version}", ext: 'jar'
-	compile group: 'cofh', name: 'CoFHCore', version: "[${config.mc_version}]${config.cofh_core_version}", ext: 'jar'
-	compile group: 'cofh', name: 'ThermalFoundation', version: "[${config.mc_version}]${config.cofh_tf_version}", ext: 'jar'
-	compile group: 'cofh', name: 'ThermalExpansion', version: "[${config.mc_version}]${config.cofh_te_version}", ext: 'jar'
-	compile group: 'cofh', name: 'ThermalDynamics', version: "[${config.mc_version}]${config.cofh_td_version}", ext: 'jar'
-
-	// EnderIO
-	compile group: 'com.enderio.core', name: 'EnderCore', version: "${config.mc_version}-${config.endercore_version}", classifier: 'dev'
-	compile group: 'com.enderio', name: 'EnderIO', version: "${config.mc_version}-${config.enderio_version}", classifier: 'dev'
-
-	// Extra Utilities
-	compile group: 'ExtraUtilities', name: 'extrautilities', version: "${config.xu_version}", ext: 'jar'
-
-	// OpenComputers
-	compile group: 'li.cil.oc', name: 'OpenComputers', version: "${config.oc_version}", classifier:  'dev'
-
-	// AE2
-	compile group: "appeng", name: "appliedenergistics2", version: "${config.ae2_version}", ext: 'jar'
 }
