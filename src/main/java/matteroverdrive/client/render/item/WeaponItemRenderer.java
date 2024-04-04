@@ -1,11 +1,14 @@
 package matteroverdrive.client.render.item;
 
+import cpw.mods.fml.common.Loader;
 import matteroverdrive.Reference;
 import matteroverdrive.api.weapon.IWeaponModule;
 import matteroverdrive.api.weapon.IWeaponScope;
 import matteroverdrive.client.resources.data.WeaponMetadataSection;
+import matteroverdrive.handler.ConfigurationHandler;
 import matteroverdrive.handler.weapon.ClientWeaponHandler;
 import matteroverdrive.proxy.ClientProxy;
+import matteroverdrive.util.IConfigSubscriber;
 import matteroverdrive.util.RenderUtils;
 import matteroverdrive.util.WeaponHelper;
 import net.minecraft.client.Minecraft;
@@ -23,11 +26,19 @@ import java.io.IOException;
 
 import static org.lwjgl.opengl.GL11.*;
 
-public abstract class WeaponItemRenderer implements IItemRenderer {
+public abstract class WeaponItemRenderer implements IItemRenderer, IConfigSubscriber {
     protected ResourceLocation weaponTexture;
     protected ResourceLocation weaponModelLocation;
     protected WavefrontObject weaponModel;
     protected Vec3 scopePosition;
+
+    public boolean enablehands = false;
+
+    public boolean iswitcheryloaded() {
+        return Loader.isModLoaded("witchery");
+    }
+
+    public Minecraft mc = Minecraft.getMinecraft();
 
     public WeaponItemRenderer(ResourceLocation weaponModelLocation, ResourceLocation weaponTexture) {
         this.weaponModelLocation = weaponModelLocation;
@@ -151,5 +162,11 @@ public abstract class WeaponItemRenderer implements IItemRenderer {
 
     public float getRecoilAmount() {
         return ClientWeaponHandler.RECOIL_AMOUNT;
+    }
+
+    //so, at the moment, for some reason I can’t add a single option to the config, so let it be this: the parameters that I blocked (to be disabled by default, and available only through the config) will now be available only through changing the mod's source code
+    @Override
+    public void onConfigChanged(ConfigurationHandler config) {
+        enablehands = config.getBool("enable hands", ConfigurationHandler.CATEGORY_CLIENT, false, "Render hands when the player is holding a weapon");
     }
 }

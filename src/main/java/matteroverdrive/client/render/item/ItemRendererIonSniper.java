@@ -7,6 +7,7 @@ import matteroverdrive.util.WeaponHelper;
 import matteroverdrive.util.animation.MOEasing;
 import matteroverdrive.util.math.MOMathHelper;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -14,6 +15,11 @@ import net.minecraft.util.Vec3;
 import org.lwjgl.opengl.GL11;
 
 import java.util.Random;
+
+import com.emoniph.witchery.client.ClientEvents;
+import com.emoniph.witchery.common.ExtendedPlayer;
+import com.emoniph.witchery.util.TransformCreature;
+import static com.emoniph.witchery.client.ClientEvents.wolfSkin;
 
 import static org.lwjgl.opengl.GL11.*;
 
@@ -65,13 +71,38 @@ public class ItemRendererIonSniper extends WeaponItemRenderer {
     }
 
     void renderThirdPerson(ItemRenderType renderType, ItemStack item) {
-        glPushMatrix();
-        glTranslated(1, 0.83, 1);
-        glRotated(-135, 0, 1, 0);
-        glRotated(60, 1, 0, 0);
-        glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
-        renderGun(renderType, item);
-        glPopMatrix();
+        if (iswitcheryloaded()) {
+            EntityClientPlayerMP entityclientplayermp = mc.thePlayer;
+            ExtendedPlayer playerEx = ExtendedPlayer.get(entityclientplayermp);
+            TransformCreature creatureType = playerEx.getCreatureType();
+            if (creatureType != TransformCreature.NONE) {
+                    if (creatureType != TransformCreature.WOLFMAN && creatureType != TransformCreature.WOLF) {
+                        glPushMatrix();
+                        glTranslated(1, 0.83, 1);
+                        glRotated(-135, 0, 1, 0);
+                        glRotated(60, 1, 0, 0);
+                        glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
+                        renderGun(renderType, item);
+                        glPopMatrix();
+                    }
+            } else {
+                glPushMatrix();
+                glTranslated(1, 0.83, 1);
+                glRotated(-135, 0, 1, 0);
+                glRotated(60, 1, 0, 0);
+                glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
+                renderGun(renderType, item);
+                glPopMatrix();
+            }
+        } else {
+            glPushMatrix();
+            glTranslated(1, 0.83, 1);
+            glRotated(-135, 0, 1, 0);
+            glRotated(60, 1, 0, 0);
+            glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
+            renderGun(renderType, item);
+            glPopMatrix();
+        }
     }
 
     void renderDrop(ItemStack item) {
@@ -87,8 +118,30 @@ public class ItemRendererIonSniper extends WeaponItemRenderer {
         float recoilValue = MOEasing.Quart.easeInOut(getRecoilTime(), 0, 1, 1f);
 
         GL11.glPushMatrix();
-        ResourceLocation skin = Minecraft.getMinecraft().thePlayer.getLocationSkin();
-        Minecraft.getMinecraft().getTextureManager().bindTexture(skin);
+
+        if (enablehands) {
+            if (iswitcheryloaded()) {
+                EntityClientPlayerMP entityclientplayermp = mc.thePlayer;
+                ExtendedPlayer playerEx = ExtendedPlayer.get(entityclientplayermp);
+                TransformCreature creatureType = playerEx.getCreatureType();
+                if (creatureType != TransformCreature.NONE) {
+                    this.mc.getTextureManager().bindTexture(entityclientplayermp.getLocationSkin());
+                    if (creatureType != TransformCreature.PLAYER) {
+                        if (creatureType == TransformCreature.WOLFMAN) {
+                            this.mc.getTextureManager().bindTexture(wolfSkin);
+                        } else if (creatureType == TransformCreature.WOLF) {
+                            this.mc.getTextureManager().bindTexture(wolfSkin);
+                        }
+                    }
+                } else {
+                    this.mc.getTextureManager().bindTexture(entityclientplayermp.getLocationSkin());
+                }
+            } else {
+                ResourceLocation skin = Minecraft.getMinecraft().thePlayer.getLocationSkin();
+                Minecraft.getMinecraft().getTextureManager().bindTexture(skin);
+            }
+        }
+
         Minecraft.getMinecraft().renderViewEntity.rotationPitch += recoilValue * random.nextGaussian() * 0.1f - ((1 - zoomValue * 0.5f) * recoilValue * getRecoilAmount()) * 0.2f;
         Minecraft.getMinecraft().renderViewEntity.rotationYaw += recoilValue * 0.05f * random.nextGaussian();
 
@@ -96,27 +149,10 @@ public class ItemRendererIonSniper extends WeaponItemRenderer {
         glTranslatef(0, recoilValue * 0.05f * getRecoilAmount(), 0);
         glRotated(MOMathHelper.Lerp(45, 0, zoomValue), 1, 1, 0);
         glRotated(MOMathHelper.Lerp(0, MOMathHelper.Lerp(3, 0, zoomValue), recoilValue), 0, 0, 1);
-        double length = 1.8;
-        double width = 0.6;
-        double depth = 0.5;
-
-        if (!Minecraft.getMinecraft().thePlayer.isInvisible()) {
-            Tessellator.instance.startDrawingQuads();
-            Tessellator.instance.setNormal(0, 0, -1);
-            Tessellator.instance.addVertexWithUV(0, 0, 0, 44f / 64f, 20f / 32f);
-            Tessellator.instance.addVertexWithUV(0, length, 0, 44f / 64f, 1);
-            Tessellator.instance.addVertexWithUV(depth, length, 0, 48f / 64f, 1);
-            Tessellator.instance.addVertexWithUV(depth, 0, 0, 48f / 64f, 20f / 32f);
-
-
-            Tessellator.instance.setNormal(-1, 0, 0);
-            Tessellator.instance.addVertexWithUV(0, 0, 0, 44f / 64f, 20f / 32f);
-            Tessellator.instance.addVertexWithUV(0, 0, width, 40f / 64f, 20f / 32f);
-            Tessellator.instance.addVertexWithUV(0, length, width, 40f / 64f, 1f);
-            Tessellator.instance.addVertexWithUV(0, length, 0, 44f / 64f, 1f);
-            Tessellator.instance.draw();
+        if (enablehands) {
+            glColor3f(1, 1, 1);
+            renderHandIonSniper();
         }
-
         GL11.glPopMatrix();
 
         glPushMatrix();
@@ -140,5 +176,28 @@ public class ItemRendererIonSniper extends WeaponItemRenderer {
         renderScope(item);
         bindTexture(weaponTexture);
         weaponModel.renderAll();
+    }
+
+    void renderHandIonSniper() {
+        double length = 1.8;
+        double width = 0.6;
+        double depth = 0.5;
+
+        if (!Minecraft.getMinecraft().thePlayer.isInvisible()) {
+            Tessellator.instance.startDrawingQuads();
+            Tessellator.instance.setNormal(0, 0, -1);
+            Tessellator.instance.addVertexWithUV(0, 0, 0, 44f / 64f, 20f / 32f);
+            Tessellator.instance.addVertexWithUV(0, length, 0, 44f / 64f, 1);
+            Tessellator.instance.addVertexWithUV(depth, length, 0, 48f / 64f, 1);
+            Tessellator.instance.addVertexWithUV(depth, 0, 0, 48f / 64f, 20f / 32f);
+
+
+            Tessellator.instance.setNormal(-1, 0, 0);
+            Tessellator.instance.addVertexWithUV(0, 0, 0, 44f / 64f, 20f / 32f);
+            Tessellator.instance.addVertexWithUV(0, 0, width, 40f / 64f, 20f / 32f);
+            Tessellator.instance.addVertexWithUV(0, length, width, 40f / 64f, 1f);
+            Tessellator.instance.addVertexWithUV(0, length, 0, 44f / 64f, 1f);
+            Tessellator.instance.draw();
+        }
     }
 }

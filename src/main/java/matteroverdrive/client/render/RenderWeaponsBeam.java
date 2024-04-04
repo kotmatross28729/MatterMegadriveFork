@@ -168,7 +168,7 @@ public class RenderWeaponsBeam extends RenderBeam<EntityPlayer> {
                 return beamTexture;
             }
         }
-        return null;
+        return beamTexture;
     }
 
     @Override

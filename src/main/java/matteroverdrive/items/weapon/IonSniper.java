@@ -96,12 +96,16 @@ public class IonSniper extends EnergyWeapon {
                 if (Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) {
                     if (isWeaponZoomed(entityPlayer, itemStack)) {
                         ClientWeaponHandler.RECOIL_AMOUNT = 2f + Math.min(2, getAccuracy(itemStack, entityPlayer, true));
-                        Minecraft.getMinecraft().renderViewEntity.hurtTime = 30 + (int) ((getHeat(itemStack) / getMaxHeat(itemStack)) * 8);
-                        Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 45;
+                        if(enableScreenShake) {
+                            Minecraft.getMinecraft().renderViewEntity.hurtTime = 30 + (int) ((getHeat(itemStack) / getMaxHeat(itemStack)) * 8);
+                            Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 45;
+                        }
                     } else {
                         ClientWeaponHandler.RECOIL_AMOUNT = 4f + Math.min(2, getAccuracy(itemStack, entityPlayer, true));
-                        Minecraft.getMinecraft().renderViewEntity.hurtTime = 30 + (int) ((getHeat(itemStack) / getMaxHeat(itemStack)) * 8);
-                        Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 45;
+                        if(enableScreenShake) {
+                            Minecraft.getMinecraft().renderViewEntity.hurtTime = 30 + (int) ((getHeat(itemStack) / getMaxHeat(itemStack)) * 8);
+                            Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 45;
+                        }
                     }
                     ClientWeaponHandler.RECOIL_TIME = 1;
                 }

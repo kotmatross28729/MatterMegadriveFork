@@ -201,6 +201,7 @@ public class RenderHandler {
         configHandler.subscribe(tileEntityRendererWeaponStation);
     }
 
+    /**
     @SubscribeEvent
     public void onPlayerRenderPost(RenderPlayerEvent.Post event) {
         //GL11.glEnable(GL11.GL_LIGHTING);
@@ -210,7 +211,6 @@ public class RenderHandler {
         if (androidPlayer != null && androidPlayer.isAndroid() && !event.entityPlayer.isInvisible()) {
             for (int i = 0; i < 5; i++) {
                 ItemStack part = androidPlayer.getStackInSlot(i);
-                /**
                 if (part != null && part.getItem() instanceof IBionicPart) {
                     IBionicPartRenderer renderer = bionicPartRenderRegistry.getRenderer(((IBionicPart) part.getItem()).getClass());
                     if (renderer != null) {
@@ -223,11 +223,11 @@ public class RenderHandler {
                         }
                     }
                 }
-                */
             }
         }
     }
-
+*/
+/**
     @SubscribeEvent
     public void onPlayerRenderPre(RenderPlayerEvent.Pre event) {
         //GL11.glEnable(GL11.GL_LIGHTING);
@@ -237,18 +237,16 @@ public class RenderHandler {
         if (androidPlayer != null && androidPlayer.isAndroid() && !event.entityPlayer.isInvisible()) {
             for (int i = 0; i < 5; i++) {
                 ItemStack part = androidPlayer.getStackInSlot(i);
-                /**
                 if (part != null && part.getItem() instanceof IBionicPart) {
                     IBionicPartRenderer renderer = bionicPartRenderRegistry.getRenderer(((IBionicPart) part.getItem()).getClass());
                     if (renderer != null) {
                         renderer.affectPlayerRenderer(part, androidPlayer, event.renderer, event.partialRenderTick);
                     }
-                }*/
-
+                }
             }
         }
     }
-
+*/
     public void createBlockRenderers() {
         blockRenderer = new MOBlockRenderer();
         rendererBlockGravitationalStabilizer = new RendererBlockGravitationalStabilizer();

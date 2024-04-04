@@ -35,12 +35,13 @@ public class GuiMatterScanner extends MOGuiBase {
     public GuiMatterScanner(ItemStack scanner, int slot) {
         super(new ContainerFalse(), 300, 230);
         this.scanner = scanner;
+        if(scanner != null) {
         registerPages(this, scanner);
         refreshTimeTracker = new TimeTracker();
         this.databaseSlot = slot;
         lastPage = MatterScanner.getLastPage(scanner);
-
         MatterOverdrive.packetPipeline.sendToServer(new PacketMatterScannerGetDatabase(MatterScanner.getLinkPosition(scanner)));
+        }
     }
 
     @Override

@@ -14,14 +14,13 @@ public class MatterOverdriveMatter {
     public static void init(ConfigurationHandler config) {
 
     }
-/*
+
     public static void registerBasic(ConfigurationHandler c) {  // TODO: Make this a config option
         registerBasicItems(c);
         registerBasicBlocks(c);
-
         registerBasicCompoundItems(c);
     }
-*/
+
     public static void registerFromConfig(ConfigurationHandler c) {
         MatterOverdrive.matterRegistry.loadNewItemsFromConfig(c);
     }

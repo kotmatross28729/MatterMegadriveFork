@@ -29,6 +29,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import static matteroverdrive.MatterOverdrive.shaders_fix;
 import static org.lwjgl.opengl.GL11.*;
 
 public class RenderMatterScannerInfoHandler implements IWorldLastRenderer {
@@ -182,6 +183,7 @@ public class RenderMatterScannerInfoHandler implements IWorldLastRenderer {
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             glDisable(GL_TEXTURE_2D);
             glColor4d(0, 0, 0, opacity);
+            Minecraft.getMinecraft().renderEngine.bindTexture(shaders_fix);
             RenderUtils.drawPlane(1);
             glEnable(GL_TEXTURE_2D);
         }

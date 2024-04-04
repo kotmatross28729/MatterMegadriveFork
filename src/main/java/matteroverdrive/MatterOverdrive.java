@@ -20,6 +20,7 @@ import matteroverdrive.network.PacketPipeline;
 import matteroverdrive.proxy.CommonProxy;
 import matteroverdrive.util.*;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 
 import java.io.File;
@@ -30,6 +31,8 @@ import java.util.concurrent.Executors;
 public class MatterOverdrive {
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
     public static CommonProxy proxy;
+
+    public static final ResourceLocation shaders_fix = new ResourceLocation(Reference.MOD_ID, "textures/shaders_workaround.png");
 
     public static final MatterOverdriveTab tabMatterOverdrive = new MatterOverdriveTab("tabMatterOverdrive");
     public static final MatterOverdriveTab tabMatterOverdrive_modules = new MatterOverdriveTab("tabMatterOverdrive_modules");
@@ -67,7 +70,7 @@ public class MatterOverdrive {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        checkJavaVersion();
+        //checkJavaVersion();
         matterRegistry = new MatterRegistry();
         statRegistry = new AndroidStatRegistry();
         dialogRegistry = new DialogRegistry();
@@ -149,7 +152,7 @@ public class MatterOverdrive {
         MatterOverdriveMatter.init(configHandler);
         MatterOverdriveMatter.registerBlacklistFromConfig(configHandler);
         MatterOverdriveMatter.registerFromConfig(configHandler);
-    //    MatterOverdriveMatter.registerBasic(configHandler);
+        MatterOverdriveMatter.registerBasic(configHandler);
 
         configHandler.postInit();
     }

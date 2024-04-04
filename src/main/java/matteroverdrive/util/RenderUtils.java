@@ -31,6 +31,7 @@ import org.lwjgl.util.vector.Vector4f;
 
 import java.util.List;
 
+import static matteroverdrive.MatterOverdrive.shaders_fix;
 import static org.lwjgl.opengl.GL11.*;
 
 public class RenderUtils {
@@ -209,6 +210,7 @@ public class RenderUtils {
         GL11.glColorMask(false, false, false, false);
         GL11.glDepthMask(false);
         Tessellator.instance.startDrawingQuads();
+        Minecraft.getMinecraft().renderEngine.bindTexture(shaders_fix);
         Tessellator.instance.addVertex((double) xMin, (double) yMax, 0.0D);
         Tessellator.instance.addVertex((double) xMax, (double) yMax, 0.0D);
         Tessellator.instance.addVertex((double) xMax, (double) yMin, 0.0D);
@@ -339,6 +341,7 @@ public class RenderUtils {
                     }
                     Tessellator.instance.addVertexWithUV(x + 0.5f + pos.x, y + pos.y, z + 0.5f + pos.z, icon.getMinU() + face.textureCoordinates[i].u * uSize + offsetU, icon.getMinV() + face.textureCoordinates[i].v * vSize + offsetV);
                 } else {
+                    Minecraft.getMinecraft().renderEngine.bindTexture(shaders_fix);
                     Tessellator.instance.addVertex(x + face.vertices[i].x, y + face.vertices[i].y, z + face.vertices[i].z);
                 }
             }

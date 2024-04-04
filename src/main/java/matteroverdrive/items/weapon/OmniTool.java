@@ -300,8 +300,10 @@ public class OmniTool extends EnergyWeapon {
                 if (Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) {
                     ClientWeaponHandler.RECOIL_AMOUNT = 6 + getAccuracy(itemStack, entityPlayer, isWeaponZoomed(entityPlayer, itemStack)) * 2;
                     ClientWeaponHandler.RECOIL_TIME = 1;
-                    Minecraft.getMinecraft().renderViewEntity.hurtTime = 8;
-                    Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 20;
+                    if(enableScreenShake) {
+                        Minecraft.getMinecraft().renderViewEntity.hurtTime = 8;
+                        Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 20;
+                    }
                 }
                 Vec3 dir = entityPlayer.getLook(1);
                 Vec3 pos = getFirePosition(entityPlayer, dir, Mouse.isButtonDown(1));

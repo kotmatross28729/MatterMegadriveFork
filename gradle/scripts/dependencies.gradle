@@ -5,6 +5,7 @@ repositories {
 }
 
 dependencies {
+    compileOnly name: 'witchery-0.24.1'
     compileOnly name: 'ForgeMultipart-1.4.8-dev'
     compileOnly name: 'endercore-0.3.1-dev'
     compileOnly name: 'EnderIO-2.6.6-dev'

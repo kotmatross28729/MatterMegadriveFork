@@ -2,6 +2,7 @@ package matteroverdrive.commands;
 
 import matteroverdrive.MatterOverdrive;
 import matteroverdrive.handler.ConfigurationHandler;
+import matteroverdrive.init.MatterOverdriveMatter;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -35,7 +36,7 @@ public class MatterRegistryCommands extends CommandBase {
         if (parameters.length == 1) {
             if (parameters[0].equalsIgnoreCase("recalculate")) {
                 MatterOverdrive.matterRegistry.getEntries().clear();
-            //    MatterOverdriveMatter.registerBasic(MatterOverdrive.configHandler);
+                MatterOverdriveMatter.registerBasic(MatterOverdrive.configHandler);
                 MatterOverdrive.matterRegistrationHandler.runCalculationThread();
             }
         } else if (parameters.length == 2) {

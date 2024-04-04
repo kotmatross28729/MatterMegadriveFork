@@ -147,12 +147,16 @@ public class PhaserRifle extends EnergyWeapon {
                 if (Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) {
                     if (isWeaponZoomed(entityPlayer, itemStack)) {
                         ClientWeaponHandler.RECOIL_AMOUNT = 0.5f + getAccuracy(itemStack, entityPlayer, true);
-                        Minecraft.getMinecraft().renderViewEntity.hurtTime = 6 + (int) ((getHeat(itemStack) / getMaxHeat(itemStack)) * 8);
-                        Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 15;
+                        if(enableScreenShake) {
+                            Minecraft.getMinecraft().renderViewEntity.hurtTime = 6 + (int) ((getHeat(itemStack) / getMaxHeat(itemStack)) * 8);
+                            Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 15;
+                        }
                     } else {
                         ClientWeaponHandler.RECOIL_AMOUNT = 2 + getAccuracy(itemStack, entityPlayer, true) * 2;
-                        Minecraft.getMinecraft().renderViewEntity.hurtTime = 10 + (int) ((getHeat(itemStack) / getMaxHeat(itemStack)) * 8);
-                        Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 25;
+                        if(enableScreenShake) {
+                            Minecraft.getMinecraft().renderViewEntity.hurtTime = 10 + (int) ((getHeat(itemStack) / getMaxHeat(itemStack)) * 8);
+                            Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 25;
+                        }
                     }
                     ClientWeaponHandler.RECOIL_TIME = 1;
                 }

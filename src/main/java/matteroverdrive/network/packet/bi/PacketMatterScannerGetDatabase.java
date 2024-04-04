@@ -34,24 +34,23 @@ public class PacketMatterScannerGetDatabase extends TileEntityUpdatePacket {
         this.list = list;
     }
 
+//TODO Investigate this in more detail, it's not yet clear what this affects?? Incredibly weird thing, but so far it seems to """work""" in its current state
     @Override
     public void fromBytes(ByteBuf buf) {
         super.fromBytes(buf);
-        int size = buf.readInt();
-        for (int i = 0; i < size; i++) {
-            list.add(new ItemPattern(buf));
-        }
+//        int size = buf.readInt();
+//        for (int i = 0; i < size; i++) {
+//            list.add(new ItemPattern(buf));
+//        }
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
-        // Only works when not empty?
-        // TODO: Investigate NullPointerException & EncoderException here.
-        super.toBytes(buf);
-        buf.writeInt(list.size());
-        for (ItemPattern pattern : list) {
-            pattern.writeToBuffer(buf);
-        }
+           super.toBytes(buf);
+//           buf.writeInt(list.size());
+//           for (ItemPattern pattern : list) {
+//               pattern.writeToBuffer(buf);
+//           }
     }
 
     public static class Handler extends AbstractBiPacketHandler<PacketMatterScannerGetDatabase> {

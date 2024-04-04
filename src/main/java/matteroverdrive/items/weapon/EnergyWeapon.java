@@ -10,12 +10,14 @@ import matteroverdrive.api.inventory.IEnergyPack;
 import matteroverdrive.api.weapon.IWeapon;
 import matteroverdrive.api.weapon.IWeaponScope;
 import matteroverdrive.api.weapon.WeaponShot;
+import matteroverdrive.handler.ConfigurationHandler;
 import matteroverdrive.init.MatterOverdriveEnchantments;
 import matteroverdrive.items.includes.MOItemEnergyContainer;
 import matteroverdrive.network.packet.bi.PacketFirePlasmaShot;
 import matteroverdrive.network.packet.server.PacketReloadEnergyWeapon;
 import matteroverdrive.proxy.ClientProxy;
 import matteroverdrive.util.EntityDamageSourcePhaser;
+import matteroverdrive.util.IConfigSubscriber;
 import matteroverdrive.util.MOEnergyHelper;
 import matteroverdrive.util.WeaponHelper;
 import matteroverdrive.util.animation.MOEasing;
@@ -41,7 +43,7 @@ import net.minecraftforge.common.util.Constants;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public abstract class EnergyWeapon extends MOItemEnergyContainer implements IWeapon {
+public abstract class EnergyWeapon extends MOItemEnergyContainer implements IWeapon, IConfigSubscriber {
 
     public static final String CUSTOM_DAMAGE_TAG = "CustomDamage";
     public static final String CUSTOM_ACCURACY_TAG = "CustomAccuracy";
@@ -54,6 +56,8 @@ public abstract class EnergyWeapon extends MOItemEnergyContainer implements IWea
     private final int defaultRange;
     private DecimalFormat damageFormater = new DecimalFormat("#.##");
     protected boolean leftClickFire;
+
+    public boolean enableScreenShake = false;
 
     public EnergyWeapon(String name, int capacity, int maxReceive, int maxExtract, int defaultRange) {
         super(name, capacity, maxReceive, maxExtract);
@@ -589,4 +593,10 @@ public abstract class EnergyWeapon extends MOItemEnergyContainer implements IWea
         return getBaseZoom(weapon, entityPlayer);
     }
     //endregion
+
+    //so, at the moment, for some reason I can’t add a single option to the config, so let it be this: the parameters that I blocked (to be disabled by default, and available only through the config) will now be available only through changing the mod's source code
+    @Override
+    public void onConfigChanged(ConfigurationHandler config) {
+        enableScreenShake = config.getBool("enable screen shake", ConfigurationHandler.CATEGORY_CLIENT, false, "Turns on the camera shaking when shooting. Disabled by default due to bugs");
+    }
 }

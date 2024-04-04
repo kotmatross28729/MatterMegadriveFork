@@ -98,7 +98,9 @@ public class PacketPipeline {
 
     //region Util functions
     public void sendToServer(IMessage message) {
-        dispatcher.sendToServer(message);
+        if(message != null) {
+            dispatcher.sendToServer(message);
+        }
     }
 
     public void sendToAllAround(IMessage message, NetworkRegistry.TargetPoint point) {

@@ -3,6 +3,7 @@ package matteroverdrive.entity.player;
 import cofh.api.energy.IEnergyContainerItem;
 import cofh.api.energy.IEnergyStorage;
 import com.google.common.collect.Multimap;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import matteroverdrive.MatterOverdrive;
@@ -52,6 +53,8 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import org.apache.logging.log4j.Level;
+import com.emoniph.witchery.common.ExtendedPlayer;
+import com.emoniph.witchery.util.TransformCreature;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -691,7 +694,15 @@ public class AndroidPlayer implements IEnergyStorage, IAndroid {
 
     private void managePotionEffects() {
         if (isAndroid() && REMOVE_POTION_EFFECTS) {
-            player.clearActivePotions();
+            if (Loader.isModLoaded("witchery")) {
+                ExtendedPlayer playerEx = ExtendedPlayer.get(player);
+                TransformCreature creatureType = playerEx.getCreatureType();
+                if (creatureType != TransformCreature.WOLFMAN && creatureType != TransformCreature.WOLF) {
+                        player.clearActivePotions();
+                }
+            } else {
+                player.clearActivePotions();
+            }
         }
     }
 

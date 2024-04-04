@@ -5,6 +5,7 @@ import matteroverdrive.util.RenderUtils;
 import matteroverdrive.util.WeaponHelper;
 import matteroverdrive.util.animation.MOEasing;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -12,6 +13,11 @@ import net.minecraftforge.client.model.obj.WavefrontObject;
 import org.lwjgl.opengl.GL11;
 
 import java.util.Random;
+
+import com.emoniph.witchery.client.ClientEvents;
+import com.emoniph.witchery.common.ExtendedPlayer;
+import com.emoniph.witchery.util.TransformCreature;
+import static com.emoniph.witchery.client.ClientEvents.wolfSkin;
 
 import static org.lwjgl.opengl.GL11.*;
 
@@ -62,13 +68,38 @@ public class ItemRendererOmniTool extends WeaponItemRenderer {
     }
 
     void renderThirdPerson(ItemRenderType renderType, ItemStack item) {
-        glPushMatrix();
-        glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
-        glTranslated(0.3, 0.3, 0.3);
-        glRotated(60, -1, 0, 1);
-        glRotated(40, 0, 1, 0);
-        renderGun(renderType, item);
-        glPopMatrix();
+        if (iswitcheryloaded()) {
+            EntityClientPlayerMP entityclientplayermp = mc.thePlayer;
+            ExtendedPlayer playerEx = ExtendedPlayer.get(entityclientplayermp);
+            TransformCreature creatureType = playerEx.getCreatureType();
+            if (creatureType != TransformCreature.NONE) {
+                if (creatureType != TransformCreature.WOLFMAN && creatureType != TransformCreature.WOLF) {
+                    glPushMatrix();
+                    glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
+                    glTranslated(0.3, 0.3, 0.3);
+                    glRotated(60, -1, 0, 1);
+                    glRotated(40, 0, 1, 0);
+                    renderGun(renderType, item);
+                    glPopMatrix();
+                }
+            } else {
+                glPushMatrix();
+                glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
+                glTranslated(0.3, 0.3, 0.3);
+                glRotated(60, -1, 0, 1);
+                glRotated(40, 0, 1, 0);
+                renderGun(renderType, item);
+                glPopMatrix();
+            }
+        } else {
+            glPushMatrix();
+            glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
+            glTranslated(0.3, 0.3, 0.3);
+            glRotated(60, -1, 0, 1);
+            glRotated(40, 0, 1, 0);
+            renderGun(renderType, item);
+            glPopMatrix();
+        }
     }
 
     void renderDrop(ItemStack item) {
@@ -89,10 +120,10 @@ public class ItemRendererOmniTool extends WeaponItemRenderer {
 
         Minecraft.getMinecraft().renderViewEntity.rotationPitch += recoilValue * random.nextGaussian() * 0.03f - recoilValue * 0.02f;
         Minecraft.getMinecraft().renderViewEntity.rotationYaw += recoilValue * 0.02f * random.nextGaussian();
-
-        glColor3f(1, 1, 1);
-        renderHand();
-
+        if (enablehands) {
+            glColor3f(1, 1, 1);
+            renderHand();
+        }
         glPushMatrix();
         glScaled(SCALE, SCALE, SCALE);
         if (Minecraft.getMinecraft().thePlayer.isUsingItem()) {
@@ -131,8 +162,27 @@ public class ItemRendererOmniTool extends WeaponItemRenderer {
     void renderHand() {
         if (!Minecraft.getMinecraft().thePlayer.isInvisible()) {
             GL11.glPushMatrix();
-            ResourceLocation skin = Minecraft.getMinecraft().thePlayer.getLocationSkin();
-            Minecraft.getMinecraft().getTextureManager().bindTexture(skin);
+
+            if (iswitcheryloaded()) {
+                EntityClientPlayerMP entityclientplayermp = mc.thePlayer;
+                ExtendedPlayer playerEx = ExtendedPlayer.get(entityclientplayermp);
+                TransformCreature creatureType = playerEx.getCreatureType();
+                if (creatureType != TransformCreature.NONE) {
+                    this.mc.getTextureManager().bindTexture(entityclientplayermp.getLocationSkin());
+                    if (creatureType != TransformCreature.PLAYER) {
+                        if (creatureType == TransformCreature.WOLFMAN) {
+                            this.mc.getTextureManager().bindTexture(wolfSkin);
+                        } else if (creatureType == TransformCreature.WOLF) {
+                            this.mc.getTextureManager().bindTexture(wolfSkin);
+                        }
+                    }
+                } else {
+                    this.mc.getTextureManager().bindTexture(entityclientplayermp.getLocationSkin());
+                }
+            } else {
+                ResourceLocation skin = Minecraft.getMinecraft().thePlayer.getLocationSkin();
+                Minecraft.getMinecraft().getTextureManager().bindTexture(skin);
+            }
 
             glTranslated(-0.2, 0.2f, 0.7);
             glRotated(45, 0, 1, 0);
