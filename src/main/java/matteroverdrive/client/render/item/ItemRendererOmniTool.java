@@ -68,30 +68,6 @@ public class ItemRendererOmniTool extends WeaponItemRenderer {
     }
 
     void renderThirdPerson(ItemRenderType renderType, ItemStack item) {
-        if (iswitcheryloaded()) {
-            EntityClientPlayerMP entityclientplayermp = mc.thePlayer;
-            ExtendedPlayer playerEx = ExtendedPlayer.get(entityclientplayermp);
-            TransformCreature creatureType = playerEx.getCreatureType();
-            if (creatureType != TransformCreature.NONE) {
-                if (creatureType != TransformCreature.WOLFMAN && creatureType != TransformCreature.WOLF) {
-                    glPushMatrix();
-                    glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
-                    glTranslated(0.3, 0.3, 0.3);
-                    glRotated(60, -1, 0, 1);
-                    glRotated(40, 0, 1, 0);
-                    renderGun(renderType, item);
-                    glPopMatrix();
-                }
-            } else {
-                glPushMatrix();
-                glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
-                glTranslated(0.3, 0.3, 0.3);
-                glRotated(60, -1, 0, 1);
-                glRotated(40, 0, 1, 0);
-                renderGun(renderType, item);
-                glPopMatrix();
-            }
-        } else {
             glPushMatrix();
             glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
             glTranslated(0.3, 0.3, 0.3);
@@ -99,7 +75,6 @@ public class ItemRendererOmniTool extends WeaponItemRenderer {
             glRotated(40, 0, 1, 0);
             renderGun(renderType, item);
             glPopMatrix();
-        }
     }
 
     void renderDrop(ItemStack item) {

@@ -71,30 +71,6 @@ public class ItemRendererIonSniper extends WeaponItemRenderer {
     }
 
     void renderThirdPerson(ItemRenderType renderType, ItemStack item) {
-        if (iswitcheryloaded()) {
-            EntityClientPlayerMP entityclientplayermp = mc.thePlayer;
-            ExtendedPlayer playerEx = ExtendedPlayer.get(entityclientplayermp);
-            TransformCreature creatureType = playerEx.getCreatureType();
-            if (creatureType != TransformCreature.NONE) {
-                    if (creatureType != TransformCreature.WOLFMAN && creatureType != TransformCreature.WOLF) {
-                        glPushMatrix();
-                        glTranslated(1, 0.83, 1);
-                        glRotated(-135, 0, 1, 0);
-                        glRotated(60, 1, 0, 0);
-                        glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
-                        renderGun(renderType, item);
-                        glPopMatrix();
-                    }
-            } else {
-                glPushMatrix();
-                glTranslated(1, 0.83, 1);
-                glRotated(-135, 0, 1, 0);
-                glRotated(60, 1, 0, 0);
-                glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
-                renderGun(renderType, item);
-                glPopMatrix();
-            }
-        } else {
             glPushMatrix();
             glTranslated(1, 0.83, 1);
             glRotated(-135, 0, 1, 0);
@@ -102,7 +78,6 @@ public class ItemRendererIonSniper extends WeaponItemRenderer {
             glScaled(THIRD_PERSON_SCALE, THIRD_PERSON_SCALE, THIRD_PERSON_SCALE);
             renderGun(renderType, item);
             glPopMatrix();
-        }
     }
 
     void renderDrop(ItemStack item) {
