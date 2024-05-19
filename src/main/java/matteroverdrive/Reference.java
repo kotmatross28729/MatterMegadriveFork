@@ -10,7 +10,7 @@ import java.util.Date;
 public class Reference {
     public static final String MOD_ID = "mo";
     public static final String MOD_NAME = "Matter Megadrive";
-    public static final String VERSION = "@VERSION@";
+    public static final String VERSION = "@VERSION@" + " kotmatross edition";
     private static final DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
     public static final String VERSION_DATE = dateFormat.format(new Date());
     public static final String GUI_FACTORY_CLASS = "matteroverdrive.gui.GuiConfigFactory";
