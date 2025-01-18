@@ -26,14 +26,11 @@ import java.io.IOException;
 
 import static org.lwjgl.opengl.GL11.*;
 
-public abstract class WeaponItemRenderer implements IItemRenderer, IConfigSubscriber {
+public abstract class WeaponItemRenderer implements IItemRenderer {
     protected ResourceLocation weaponTexture;
     protected ResourceLocation weaponModelLocation;
     protected WavefrontObject weaponModel;
     protected Vec3 scopePosition;
-
-    public boolean enablehands = false;
-
     public boolean iswitcheryloaded() {
         return Loader.isModLoaded("witchery");
     }
@@ -162,11 +159,5 @@ public abstract class WeaponItemRenderer implements IItemRenderer, IConfigSubscr
 
     public float getRecoilAmount() {
         return ClientWeaponHandler.RECOIL_AMOUNT;
-    }
-
-    //so, at the moment, for some reason I can’t add a single option to the config, so let it be this: the parameters that I blocked (to be disabled by default, and available only through the config) will now be available only through changing the mod's source code
-    @Override
-    public void onConfigChanged(ConfigurationHandler config) {
-        enablehands = config.getBool("enable hands", ConfigurationHandler.CATEGORY_CLIENT, false, "Render hands when the player is holding a weapon");
     }
 }

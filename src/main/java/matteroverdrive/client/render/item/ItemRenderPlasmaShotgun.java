@@ -1,10 +1,10 @@
 package matteroverdrive.client.render.item;
 
-import cpw.mods.fml.common.Loader;
+import com.emoniph.witchery.common.ExtendedPlayer;
+import com.emoniph.witchery.util.TransformCreature;
 import matteroverdrive.Reference;
-import matteroverdrive.handler.ConfigurationHandler;
+import matteroverdrive.core.CFG;
 import matteroverdrive.proxy.ClientProxy;
-import matteroverdrive.util.IConfigSubscriber;
 import matteroverdrive.util.RenderUtils;
 import matteroverdrive.util.WeaponHelper;
 import matteroverdrive.util.animation.MOEasing;
@@ -14,18 +14,18 @@ import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.GL11;
 
 import java.util.Random;
 
-import com.emoniph.witchery.client.ClientEvents;
-import com.emoniph.witchery.common.ExtendedPlayer;
-import com.emoniph.witchery.util.TransformCreature;
 import static com.emoniph.witchery.client.ClientEvents.wolfSkin;
-
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11.glColor3f;
+import static org.lwjgl.opengl.GL11.glPopMatrix;
+import static org.lwjgl.opengl.GL11.glPushMatrix;
+import static org.lwjgl.opengl.GL11.glRotated;
+import static org.lwjgl.opengl.GL11.glScaled;
+import static org.lwjgl.opengl.GL11.glTranslated;
+import static org.lwjgl.opengl.GL11.glTranslatef;
 
 public class ItemRenderPlasmaShotgun extends WeaponItemRenderer {
 
@@ -98,7 +98,7 @@ public class ItemRenderPlasmaShotgun extends WeaponItemRenderer {
         float recoilValue = MOEasing.Quart.easeInOut(getRecoilTime(), 0, 1, 1f);
         GL11.glPushMatrix();
 
-        if (enablehands) {
+        if (CFG.enablehands) {
             if (iswitcheryloaded()) {
                 EntityClientPlayerMP entityclientplayermp = mc.thePlayer;
                 ExtendedPlayer playerEx = ExtendedPlayer.get(entityclientplayermp);
@@ -129,7 +129,7 @@ public class ItemRenderPlasmaShotgun extends WeaponItemRenderer {
         glRotated(MOMathHelper.Lerp(45, 0, zoomValue), 1, 1, 0);
         glRotated(MOMathHelper.Lerp(0, MOMathHelper.Lerp(3, 0, zoomValue), recoilValue), 0, 0, 1);
 
-        if (enablehands) {
+        if (CFG.enablehands) {
             glColor3f(1, 1, 1);
             renderHandShotgun();
         }

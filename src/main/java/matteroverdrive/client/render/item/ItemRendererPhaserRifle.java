@@ -1,6 +1,7 @@
 package matteroverdrive.client.render.item;
 
 import matteroverdrive.Reference;
+import matteroverdrive.core.CFG;
 import matteroverdrive.init.MatterOverdriveItems;
 import matteroverdrive.items.weapon.PhaserRifle;
 import matteroverdrive.proxy.ClientProxy;
@@ -99,7 +100,7 @@ public class ItemRendererPhaserRifle extends WeaponItemRenderer {
 
         GL11.glPushMatrix();
 
-        if (enablehands) {
+        if (CFG.enablehands) {
             if (iswitcheryloaded()) {
                 EntityClientPlayerMP entityclientplayermp = mc.thePlayer;
                 ExtendedPlayer playerEx = ExtendedPlayer.get(entityclientplayermp);
@@ -130,7 +131,7 @@ public class ItemRendererPhaserRifle extends WeaponItemRenderer {
         glRotated(MOMathHelper.Lerp(45, 0, zoomValue), 1, 1, 0);
         glRotated(MOMathHelper.Lerp(0, MOMathHelper.Lerp(3, 0, zoomValue), recoilValue), 0, 0, 1);
 
-        if (enablehands) {
+        if (CFG.enablehands) {
             renderHandPhaserRifle();
         }
 

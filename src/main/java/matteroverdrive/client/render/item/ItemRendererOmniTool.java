@@ -1,6 +1,9 @@
 package matteroverdrive.client.render.item;
 
+import com.emoniph.witchery.common.ExtendedPlayer;
+import com.emoniph.witchery.util.TransformCreature;
 import matteroverdrive.Reference;
+import matteroverdrive.core.CFG;
 import matteroverdrive.util.RenderUtils;
 import matteroverdrive.util.WeaponHelper;
 import matteroverdrive.util.animation.MOEasing;
@@ -14,12 +17,18 @@ import org.lwjgl.opengl.GL11;
 
 import java.util.Random;
 
-import com.emoniph.witchery.client.ClientEvents;
-import com.emoniph.witchery.common.ExtendedPlayer;
-import com.emoniph.witchery.util.TransformCreature;
 import static com.emoniph.witchery.client.ClientEvents.wolfSkin;
-
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11.GL_LIGHTING;
+import static org.lwjgl.opengl.GL11.GL_NORMALIZE;
+import static org.lwjgl.opengl.GL11.glColor3f;
+import static org.lwjgl.opengl.GL11.glDisable;
+import static org.lwjgl.opengl.GL11.glEnable;
+import static org.lwjgl.opengl.GL11.glPopMatrix;
+import static org.lwjgl.opengl.GL11.glPushMatrix;
+import static org.lwjgl.opengl.GL11.glRotated;
+import static org.lwjgl.opengl.GL11.glScaled;
+import static org.lwjgl.opengl.GL11.glTranslated;
+import static org.lwjgl.opengl.GL11.glTranslatef;
 
 public class ItemRendererOmniTool extends WeaponItemRenderer {
     public static final String TEXTURE = Reference.PATH_ITEM + "wielder.png";
@@ -95,7 +104,7 @@ public class ItemRendererOmniTool extends WeaponItemRenderer {
 
         Minecraft.getMinecraft().renderViewEntity.rotationPitch += recoilValue * random.nextGaussian() * 0.03f - recoilValue * 0.02f;
         Minecraft.getMinecraft().renderViewEntity.rotationYaw += recoilValue * 0.02f * random.nextGaussian();
-        if (enablehands) {
+        if (CFG.enablehands) {
             glColor3f(1, 1, 1);
             renderHand();
         }

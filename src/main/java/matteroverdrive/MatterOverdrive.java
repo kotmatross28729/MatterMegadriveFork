@@ -9,6 +9,7 @@ import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import matteroverdrive.commands.*;
 import matteroverdrive.compat.MatterOverdriveCompat;
+import matteroverdrive.core.CFG;
 import matteroverdrive.dialog.DialogRegistry;
 import matteroverdrive.entity.player.AndroidPlayer;
 import matteroverdrive.handler.*;
@@ -20,6 +21,7 @@ import matteroverdrive.network.PacketPipeline;
 import matteroverdrive.proxy.CommonProxy;
 import matteroverdrive.util.*;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.launchwrapper.Launch;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -121,6 +123,13 @@ public class MatterOverdrive {
         configHandler.init();
         MatterOverdriveCompat.init(event);
 
+        ///CONFIG
+        String configFolder = "config" + File.separator + "MatterMegadrive" + File.separator;
+        String configFolderEntry = configFolder + "kotmatrossConfig" + File.separator;
+    
+        CFG.loadConfig(new File(Launch.minecraftHome, configFolderEntry + "Misc.cfg"));
+        ///CONFIG
+        
         MatterOverdriveBlocks.register(event);
         MatterOverdriveItems.register(event);
         MatterOverdriveFluids.register(event);

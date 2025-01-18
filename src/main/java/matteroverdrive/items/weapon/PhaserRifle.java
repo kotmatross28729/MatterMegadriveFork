@@ -7,6 +7,7 @@ import matteroverdrive.api.weapon.IWeaponModule;
 import matteroverdrive.api.weapon.WeaponShot;
 import matteroverdrive.client.sound.MOPositionedSound;
 import matteroverdrive.client.sound.WeaponSound;
+import matteroverdrive.core.CFG;
 import matteroverdrive.entity.weapon.PlasmaBolt;
 import matteroverdrive.handler.weapon.ClientWeaponHandler;
 import matteroverdrive.items.weapon.module.WeaponModuleBarrel;
@@ -147,13 +148,13 @@ public class PhaserRifle extends EnergyWeapon {
                 if (Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) {
                     if (isWeaponZoomed(entityPlayer, itemStack)) {
                         ClientWeaponHandler.RECOIL_AMOUNT = 0.5f + getAccuracy(itemStack, entityPlayer, true);
-                        if(enableScreenShake) {
+                        if(CFG.enableScreenShake) {
                             Minecraft.getMinecraft().renderViewEntity.hurtTime = 6 + (int) ((getHeat(itemStack) / getMaxHeat(itemStack)) * 8);
                             Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 15;
                         }
                     } else {
                         ClientWeaponHandler.RECOIL_AMOUNT = 2 + getAccuracy(itemStack, entityPlayer, true) * 2;
-                        if(enableScreenShake) {
+                        if(CFG.enableScreenShake) {
                             Minecraft.getMinecraft().renderViewEntity.hurtTime = 10 + (int) ((getHeat(itemStack) / getMaxHeat(itemStack)) * 8);
                             Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 25;
                         }

@@ -8,6 +8,7 @@ import matteroverdrive.api.weapon.WeaponShot;
 import matteroverdrive.client.data.Color;
 import matteroverdrive.client.sound.MOPositionedSound;
 import matteroverdrive.client.sound.WeaponSound;
+import matteroverdrive.core.CFG;
 import matteroverdrive.entity.weapon.PlasmaBolt;
 import matteroverdrive.fx.PhaserBoltRecoil;
 import matteroverdrive.handler.weapon.ClientWeaponHandler;
@@ -300,7 +301,7 @@ public class OmniTool extends EnergyWeapon {
                 if (Minecraft.getMinecraft().gameSettings.thirdPersonView == 0) {
                     ClientWeaponHandler.RECOIL_AMOUNT = 6 + getAccuracy(itemStack, entityPlayer, isWeaponZoomed(entityPlayer, itemStack)) * 2;
                     ClientWeaponHandler.RECOIL_TIME = 1;
-                    if(enableScreenShake) {
+                    if(CFG.enableScreenShake) {
                         Minecraft.getMinecraft().renderViewEntity.hurtTime = 8;
                         Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 20;
                     }

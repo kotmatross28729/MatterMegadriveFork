@@ -7,6 +7,7 @@ import matteroverdrive.Reference;
 import matteroverdrive.api.weapon.WeaponShot;
 import matteroverdrive.client.sound.MOPositionedSound;
 import matteroverdrive.client.sound.WeaponSound;
+import matteroverdrive.core.CFG;
 import matteroverdrive.entity.weapon.PlasmaBolt;
 import matteroverdrive.handler.weapon.ClientWeaponHandler;
 import matteroverdrive.init.MatterOverdriveItems;
@@ -206,7 +207,7 @@ public class PlasmaShotgun extends EnergyWeapon {
 
             ClientWeaponHandler.RECOIL_AMOUNT = 15 + (maxCount - count) * 2 + getAccuracy(weapon, entityPlayer, isWeaponZoomed(entityPlayer, weapon)) * 2;
             ClientWeaponHandler.RECOIL_TIME = 1 + (maxCount - count) * 0.03f;
-            if(enableScreenShake) {
+            if(CFG.enableScreenShake) {
                 Minecraft.getMinecraft().renderViewEntity.hurtTime = 15 + (maxCount - count);
                 Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 30 + (maxCount - count);
             }
@@ -254,7 +255,7 @@ public class PlasmaShotgun extends EnergyWeapon {
                 itemStack.getTagCompound().setLong("LastShot", world.getTotalWorldTime());
                 ClientWeaponHandler.RECOIL_AMOUNT = 12 + getAccuracy(itemStack, entityPlayer, isWeaponZoomed(entityPlayer, itemStack)) * 2;
                 ClientWeaponHandler.RECOIL_TIME = 1;
-                if(enableScreenShake) {
+                if(CFG.enableScreenShake) {
                     Minecraft.getMinecraft().renderViewEntity.hurtTime = 15;
                     Minecraft.getMinecraft().renderViewEntity.maxHurtTime = 30;
                 }

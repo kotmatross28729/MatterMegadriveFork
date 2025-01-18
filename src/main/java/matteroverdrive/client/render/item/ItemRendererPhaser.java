@@ -1,6 +1,7 @@
 package matteroverdrive.client.render.item;
 
 import matteroverdrive.Reference;
+import matteroverdrive.core.CFG;
 import matteroverdrive.items.weapon.Phaser;
 import matteroverdrive.util.RenderUtils;
 import matteroverdrive.util.WeaponHelper;
@@ -88,7 +89,7 @@ public class ItemRendererPhaser extends WeaponItemRenderer {
 
     void renderFirstPerson(ItemStack item) {
         glPushMatrix();
-        if (enablehands) {
+        if (CFG.enablehands) {
             renderHand();
         }
         glPopMatrix();

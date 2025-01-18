@@ -62,29 +62,37 @@ public class ConfigurationHandler {
 
     public void init() {
         config.load();
+        
         ConfigCategory category = config.getCategory(CATEGORY_MATTER);
         category.setComment("Configuration for the Matter ");
         updateCategoryLang(category);
         config.get(CATEGORY_MATTER, KEY_BLACKLIST, new String[0]).comment = "Blacklist for items in the matter registry. Automatic Recipe calculation will ignore recipes with these items. Just add the unlocalized name or the ore dictionary name in the list.";
         config.get(CATEGORY_MATTER, KEY_BLACKLIST_MODS, new String[0]).comment = "Blacklist for mods (mod ID). Automatic Recipe calculation will ignore recipes with items from this mod";
+        
         category = config.getCategory(CATEGORY_NEW_ITEMS);
         category.setComment("Registration of new items and the amount of matter they contain. Add them like so: I:[registered name or ore Dictionary name](meta)=[matter amount]. () - optional parameter. Example I:dye2=10 I:egg=29");
         updateCategoryLang(category);
+        
         category = config.getCategory(CATEGORY_OVERRIDE_MATTER);
         category.setComment("Overriding of existing items and the amount of matter they contain. Add them like so: I:[registered name or ore Dictionary name](meta)=[matter amount] () - optional parameter. Example I:dye2=10 I:egg=29");
         updateCategoryLang(category);
+        
         category = config.getCategory(CATEGORY_CLIENT);
         updateCategoryLang(category);
         category.setComment("Options for the Matter Megadrive client");
+        
         category = config.getCategory(CATEGORY_SERVER);
         updateCategoryLang(category);
         category.setComment("Options form the Matter Megadrive server");
+        
         category = config.getCategory(CATEGORY_ENTITIES);
         updateCategoryLang(category);
         category.setComment("Options for Matter Megadrive Entities. Such as their Entity IDs.");
+        
         category = config.getCategory(CATEGORY_DEBUG);
         updateCategoryLang(category);
         category.setComment("Debug Options. Such as Debug Log for Matter Recipe Calculation");
+        
         category = config.getCategory(CATEGORY_ANDROID_HUD);
         updateCategoryLang(category);
         category.setComment("Positioning and colors of Android HUD elements");
@@ -92,18 +100,23 @@ public class ConfigurationHandler {
         category = config.getCategory(CATEGORY_MACHINES);
         category.setComment("Machine Options.");
         updateCategoryLang(category);
+        
         category = config.getCategory(CATEGORY_MATTER_NETWORK);
         category.setComment("Matter Network Options.");
         updateCategoryLang(category);
+        
         category = config.getCategory(CATEGORY_WORLD_GEN);
         category.setComment("World Generation options.");
         updateCategoryLang(category);
+        
         category = config.getCategory(CATEGORY_STARMAP);
         category.setComment("Star Map Galaxy Options");
         updateCategoryLang(category);
+        
         category = config.getCategory(CATEGORY_ABILITIES);
         category.setComment("Android Player Abilities");
         updateCategoryLang(category);
+        
         category = config.getCategory(CATEGORY_COMPATIBILITY);
         category.setComment("Option for other mods");
         updateCategoryLang(category);
