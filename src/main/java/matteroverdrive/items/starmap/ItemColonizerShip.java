@@ -38,7 +38,7 @@ public class ItemColonizerShip extends ItemShipAbstract {
 
     @Override
     public boolean canBuild(ItemStack building, Planet planet, List<String> info) {
-        return !planet.hasBuildingType(BuildingType.BASE);
+        return planet.hasBuildingType(BuildingType.BASE);
     }
 
     @Override

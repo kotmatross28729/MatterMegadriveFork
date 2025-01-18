@@ -30,7 +30,7 @@ import java.util.UUID;
 
 public class GalaxyServer extends GalaxyCommon implements IConfigSubscriber {
     //region Static Vars
-    public static final int GALAXY_VERSION = 1;
+    public static final int GALAXY_VERSION = 0;
     //endregion
     //region Private Vars
     private static GalaxyServer instance;

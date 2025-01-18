@@ -496,7 +496,7 @@ public class Planet extends SpaceBody implements IInventory {
     }
 
     public boolean canBuild(IShip ship, ItemStack stack, List<String> info) {
-        if (fleet.size() < getFleetCount()) {
+        if (fleet.size() < getFleetSpaces()) {
             if (hasBuildingType(BuildingType.SHIP_FACTORY)) {
                 return ship.canBuild(stack, this, info);
             }
