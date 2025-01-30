@@ -13,6 +13,7 @@ import matteroverdrive.api.android.IBionicStat;
 import matteroverdrive.api.weapon.IWeapon;
 import matteroverdrive.client.data.Color;
 import matteroverdrive.client.render.HoloIcon;
+import matteroverdrive.core.CFG;
 import matteroverdrive.entity.player.AndroidPlayer;
 import matteroverdrive.gui.android.*;
 import matteroverdrive.gui.config.EnumConfigProperty;
@@ -31,6 +32,7 @@ import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.config.Property;
+import org.apache.logging.log4j.LogManager;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
@@ -385,10 +387,18 @@ public class GuiAndroidHud extends Gui implements IConfigSubscriber {
         bionicStats.setHudPosition(AndroidHudPosition.values()[prop.getInt()]);
 
         Color color = Reference.COLOR_HOLO;
-        prop = config.config.get(ConfigurationHandler.CATEGORY_ANDROID_HUD, "hud_color", Integer.toHexString(color.getColor()));
+        int colorValue = color.getColor();
+        int rgbValue = colorValue & 0x00FFFFFF; //AHEX -> HEX
+        
+        String hexColor = Integer.toHexString(rgbValue);
+        prop = config.config.get(ConfigurationHandler.CATEGORY_ANDROID_HUD, "hud_color", hexColor);
         prop.setLanguageKey("config.android_hud.color");
+        
+        //prop = config.config.get(ConfigurationHandler.CATEGORY_ANDROID_HUD, "hud_color", Integer.toHexString(color.getColor()));
+        //prop.setLanguageKey("config.android_hud.color");
+        
         try {
-            baseGuiColor = new Color(Integer.parseInt(prop.getString(), 16));
+            baseGuiColor = new Color(Integer.parseInt(prop.getString() , 16));
         } catch (Exception e) {
             baseGuiColor = Reference.COLOR_HOLO;
         }

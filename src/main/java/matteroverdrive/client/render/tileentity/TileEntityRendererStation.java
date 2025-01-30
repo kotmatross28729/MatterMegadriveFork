@@ -3,6 +3,7 @@ package matteroverdrive.client.render.tileentity;
 import matteroverdrive.MatterOverdrive;
 import matteroverdrive.Reference;
 import matteroverdrive.client.data.Color;
+import matteroverdrive.core.CFG;
 import matteroverdrive.handler.ConfigurationHandler;
 import matteroverdrive.machines.MOTileEntityMachine;
 import matteroverdrive.util.IConfigSubscriber;
@@ -26,7 +27,7 @@ import java.util.Random;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL20.*;
 
-public abstract class TileEntityRendererStation<T extends MOTileEntityMachine> extends TileEntitySpecialRenderer implements IConfigSubscriber {
+public abstract class TileEntityRendererStation<T extends MOTileEntityMachine> extends TileEntitySpecialRenderer {
     public static ResourceLocation glowTexture = new ResourceLocation(Reference.PATH_FX + "hologram_beam.png");
     ResourceLocation holo_shader_vert_loc = new ResourceLocation(Reference.PATH_SHADERS + "holo_shader.vert");
     ResourceLocation holo_shader_frag_loc = new ResourceLocation(Reference.PATH_SHADERS + "holo_shader.frag");
@@ -34,7 +35,6 @@ public abstract class TileEntityRendererStation<T extends MOTileEntityMachine> e
     String holo_shader_frag;
     protected int shaderProgram;
     protected boolean validShader = true;
-    private boolean enableHoloShader = true;
     int vertexShader;
     int fragmentShader;
     Random fliker;
@@ -206,7 +206,7 @@ public abstract class TileEntityRendererStation<T extends MOTileEntityMachine> e
     }
 
     protected void beginHolo(T tileEntity) {
-        if (validShader && enableHoloShader) {
+        if (validShader && CFG.enableHoloShader) {
             glUseProgram(shaderProgram);
             glUniform4f(0, getHoloColor(tileEntity).getFloatR(), getHoloColor(tileEntity).getFloatG(), getHoloColor(tileEntity).getFloatB(), 0);
         } else {
@@ -253,10 +253,5 @@ public abstract class TileEntityRendererStation<T extends MOTileEntityMachine> e
 
             glPopMatrix();
         }
-    }
-
-    @Override
-    public void onConfigChanged(ConfigurationHandler config) {
-        enableHoloShader = config.getBool("use holo shader", ConfigurationHandler.CATEGORY_CLIENT, true, "Use the custom holo shader for holographic items");
     }
 }

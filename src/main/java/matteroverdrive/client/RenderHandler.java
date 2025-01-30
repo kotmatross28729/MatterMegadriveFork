@@ -253,9 +253,6 @@ public class RenderHandler {
         tileEntityRendererPacketQueue = new TileEntityRendererPacketQueue();
         tileEntityRendererInscriber = new TileEntityRendererInscriber();
         tileEntityRendererContractMarket = new TileEntityRendererContractMarket();
-
-        configHandler.subscribe(tileEntityRendererAndroidStation);
-        configHandler.subscribe(tileEntityRendererWeaponStation);
     }
 
     /**
