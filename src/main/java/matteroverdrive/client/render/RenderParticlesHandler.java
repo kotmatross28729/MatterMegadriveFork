@@ -66,7 +66,6 @@ public class RenderParticlesHandler implements IWorldLastRenderer {
                     CrashReport crashreport = CrashReport.makeCrashReport(throwable, "Ticking Particle");
                     CrashReportCategory crashreportcategory = crashreport.makeCategory("Particle being ticked");
                     crashreportcategory.addCrashSectionCallable("Particle", new Callable() {
-                        private static final String __OBFID = "CL_00000916";
 
                         public String call() {
                             return entityfx.toString();

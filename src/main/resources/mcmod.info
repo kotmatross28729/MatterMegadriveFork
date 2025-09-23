@@ -1,19 +1,21 @@
-[
-    {
-        "modid": "mo",
-        "name": "Matter Megadrive",
+{
+        "modListVersion": 2,
+        "modList": [{
+        "modid": "${modId}",
+        "name": "${modName}",
         "description": "A mod that dwells within matter and energy.",
-        "version": "${version}",
-        "mcversion": "${mcversion}",
-        "url": "https://github.com/Ionaru/MatterMegadrive",
-        "authorList": [
-            "Simeon Radivoev",
-            "Ionaru"
-        ],
-        "logoFile": "/MatterMegadriveLogo.png",
-        "requiredMods": [
-            "Forge",
-            "CoFHLib"
-        ]
-    }
-]
+        "version": "${modVersion}",
+        "mcversion": "${minecraftVersion}",
+        "url": "https://github.com/kotmatross28729/MatterMegadriveFork",
+        "updateUrl": "",
+        "authorList": ["Simeon Radivoev","Ionaru"],
+        "credits": "",
+        "logoFile": "MatterMegadriveLogo.png",
+        "screenshots": [],
+        "parent": "",
+        "requiredMods": [],
+        "dependencies": [],
+        "dependants": [],
+        "useDependencyInformation": false
+        }]
+}

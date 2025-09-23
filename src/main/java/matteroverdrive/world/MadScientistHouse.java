@@ -21,7 +21,6 @@ import java.util.Random;
 public class MadScientistHouse extends StructureVillagePieces.Village {
     private boolean hasMadeChest;
     int villagersSpawned;
-    private static final String __OBFID = "CL_00000517";
 
     public MadScientistHouse() {
     }

@@ -11,7 +11,6 @@ public class EntityAIMoveAlongPath extends EntityAIBase {
     private double movePosY;
     private double movePosZ;
     private double movementSpeed;
-    private static final String __OBFID = "CL_00001598";
 
     public EntityAIMoveAlongPath(IPathableMob pathableMob, double moveSpeedMultiply) {
         this.pathableMob = pathableMob;

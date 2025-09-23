@@ -24,7 +24,6 @@ public class EntityAINearestTarget extends EntityAITarget {
         this.theNearestAttackableTargetSorter = new EntityAINearestAttackableTarget.Sorter(theEntity);
         this.setMutexBits(1);
         this.targetEntitySelector = new IEntitySelector() {
-            private static final String __OBFID = "CL_00001621";
 
             /**
              * Return whether the specified entity is applicable to this filter.

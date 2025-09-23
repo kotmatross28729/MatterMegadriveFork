@@ -1,46 +1,37 @@
-*.class
-
-# Resources #
-*.psd
-*.wav
-*.mp3
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-
-run/
-logs/
-
-# Windows
-thumbs.db
-
-# Mac
-.DS_Store
-
-# Gradle
-.gradle/
-build/
- 
-# Eclipse
-eclipse/
-.settings/
-.metdata/
-.classpath/
-.project/
-bin/
-
-# VSCode
-.vscode/
- 
-# IntelliJ
-out/
-.idea/
+.gradle
+.settings
+/.idea/
+/.vscode/
+/run/
+/build/
+/eclipse/
+.classpath
+.project
+/bin/
+/config/
+/crash-reports/
+/logs/
+options.txt
+/saves/
+usernamecache.json
+banned-ips.json
+banned-players.json
+eula.txt
+ops.json
+server.properties
+servers.dat
+usercache.json
+whitelist.json
+/out/
 *.iml
 *.ipr
 *.iws
-
-# Java
-*.hprof
-/.classpath
-/.project
-/gradle-app.setting
+*.bat
+*.DS_Store
+!gradlew.bat
+.factorypath
+addon.local.gradle
+addon.local.gradle.kts
+addon.late.local.gradle
+addon.late.local.gradle.kts
+layout.json

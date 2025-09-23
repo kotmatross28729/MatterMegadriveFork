@@ -12,7 +12,6 @@ public class GravitationalStabilizerBeamParticle extends EntityFX {
     Vector3f up;
     float orbitRadius;
     int startTime;
-    private static final String __OBFID = "CL_00000924";
 
     public GravitationalStabilizerBeamParticle(World world, Vector3f from, Vector3f to, Vector3f up) {
         this(world, from, to, up, 1.0F, 1.0F, 40);
