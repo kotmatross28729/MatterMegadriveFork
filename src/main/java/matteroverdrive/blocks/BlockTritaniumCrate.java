@@ -5,7 +5,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import matteroverdrive.Reference;
 import matteroverdrive.blocks.includes.MOBlockMachine;
-import matteroverdrive.client.render.block.RendererBlockTritaniumCrate;
 import matteroverdrive.data.Inventory;
 import matteroverdrive.init.MatterOverdriveIcons;
 import matteroverdrive.init.MatterOverdriveItems;
@@ -70,10 +69,10 @@ public class BlockTritaniumCrate extends MOBlockMachine {
     public void registerBlockIcons(IIconRegister p_149651_1_) {
         return;
     }
-
+    
     @Override
     public int getRenderType() {
-        return RendererBlockTritaniumCrate.renderID;
+        return -1;
     }
 
     @Override

@@ -3,7 +3,6 @@ package matteroverdrive.blocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import matteroverdrive.blocks.includes.MOBlockMachine;
-import matteroverdrive.client.render.block.RendererBlockChargingStation;
 import matteroverdrive.data.BlockPos;
 import matteroverdrive.handler.ConfigurationHandler;
 import matteroverdrive.init.MatterOverdriveIcons;
@@ -66,12 +65,12 @@ public class BlockChargingStation extends MOBlockMachine {
     public TileEntity createNewTileEntity(World world, int meta) {
         return new TileEntityMachineChargingStation();
     }
-
+    
     @Override
     public int getRenderType() {
-        return RendererBlockChargingStation.renderID;
+        return -1;
     }
-
+    
     @Override
     public boolean isOpaqueCube() {
         return false;

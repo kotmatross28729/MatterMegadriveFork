@@ -3,7 +3,6 @@ package matteroverdrive.blocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import matteroverdrive.blocks.includes.MOMatterEnergyStorageBlock;
-import matteroverdrive.client.render.block.RendererBlockReplicator;
 import matteroverdrive.handler.ConfigurationHandler;
 import matteroverdrive.init.MatterOverdriveIcons;
 import matteroverdrive.tile.TileEntityMachineReplicator;
@@ -57,7 +56,7 @@ public class BlockReplicator extends MOMatterEnergyStorageBlock {
      */
     @Override
     public int getRenderType() {
-        return RendererBlockReplicator.renderID;
+        return -1;
     }
 
     @Override

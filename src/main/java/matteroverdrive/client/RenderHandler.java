@@ -22,14 +22,9 @@ import matteroverdrive.client.render.WeaponModuleModelRegistry;
 import matteroverdrive.client.render.biostat.BioticStatRendererShield;
 import matteroverdrive.client.render.biostat.BioticStatRendererTeleporter;
 import matteroverdrive.client.render.block.MOBlockRenderer;
-import matteroverdrive.client.render.block.RendererBlockChargingStation;
 import matteroverdrive.client.render.block.RendererBlockDecorativeVertical;
 import matteroverdrive.client.render.block.RendererBlockGravitationalStabilizer;
-import matteroverdrive.client.render.block.RendererBlockInscriber;
-import matteroverdrive.client.render.block.RendererBlockPatternStorage;
 import matteroverdrive.client.render.block.RendererBlockPipe;
-import matteroverdrive.client.render.block.RendererBlockReplicator;
-import matteroverdrive.client.render.block.RendererBlockTritaniumCrate;
 import matteroverdrive.client.render.entity.EntityRendererFailedChicken;
 import matteroverdrive.client.render.entity.EntityRendererFailedCow;
 import matteroverdrive.client.render.entity.EntityRendererFailedPig;
@@ -60,6 +55,7 @@ import matteroverdrive.client.render.tileentity.TileEntityRendererPatternMonitor
 import matteroverdrive.client.render.tileentity.TileEntityRendererPipe;
 import matteroverdrive.client.render.tileentity.TileEntityRendererReplicator;
 import matteroverdrive.client.render.tileentity.TileEntityRendererStarMap;
+import matteroverdrive.client.render.tileentity.TileEntityRendererTritaniumCrate;
 import matteroverdrive.client.render.tileentity.TileEntityRendererWeaponStation;
 import matteroverdrive.client.render.tileentity.starmap.StarMapRenderGalaxy;
 import matteroverdrive.client.render.tileentity.starmap.StarMapRenderPlanetStats;
@@ -96,6 +92,7 @@ import matteroverdrive.tile.TileEntityMachinePatternMonitor;
 import matteroverdrive.tile.TileEntityMachinePatternStorage;
 import matteroverdrive.tile.TileEntityMachineReplicator;
 import matteroverdrive.tile.TileEntityMachineStarMap;
+import matteroverdrive.tile.TileEntityTritaniumCrate;
 import matteroverdrive.tile.TileEntityWeaponStation;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
@@ -132,11 +129,6 @@ public class RenderHandler {
     private MOBlockRenderer blockRenderer;
     private RendererBlockGravitationalStabilizer rendererBlockGravitationalStabilizer;
     private RendererBlockPipe rendererBlockPipe;
-    private RendererBlockChargingStation rendererBlockChargingStation;
-    private RendererBlockPatternStorage rendererBlockPatternStorage;
-    private RendererBlockReplicator rendererBlockReplicator;
-    private RendererBlockTritaniumCrate rendererBlockTritaniumCrate;
-    private RendererBlockInscriber rendererBlockInscriber;
     private RendererBlockDecorativeVertical rendererBlockDecorativeVertical;
     //endregion
     //region Biostat Renderers
@@ -186,6 +178,7 @@ public class RenderHandler {
     private TileEntityRendererHoloSign tileEntityRendererHoloSign;
     private TileEntityRendererPacketQueue tileEntityRendererPacketQueue;
     private TileEntityRendererInscriber tileEntityRendererInscriber;
+    private TileEntityRendererTritaniumCrate tileEntityRendererTritaniumCrate;
     private TileEntityRendererContractMarket tileEntityRendererContractMarket;
     //endregion
     //region Models
@@ -252,6 +245,7 @@ public class RenderHandler {
         tileEntityRendererHoloSign = new TileEntityRendererHoloSign();
         tileEntityRendererPacketQueue = new TileEntityRendererPacketQueue();
         tileEntityRendererInscriber = new TileEntityRendererInscriber();
+        tileEntityRendererTritaniumCrate = new TileEntityRendererTritaniumCrate();
         tileEntityRendererContractMarket = new TileEntityRendererContractMarket();
     }
 
@@ -305,11 +299,6 @@ public class RenderHandler {
         blockRenderer = new MOBlockRenderer();
         rendererBlockGravitationalStabilizer = new RendererBlockGravitationalStabilizer();
         rendererBlockPipe = new RendererBlockPipe();
-        rendererBlockChargingStation = new RendererBlockChargingStation();
-        rendererBlockPatternStorage = new RendererBlockPatternStorage();
-        rendererBlockReplicator = new RendererBlockReplicator();
-        rendererBlockTritaniumCrate = new RendererBlockTritaniumCrate();
-        rendererBlockInscriber = new RendererBlockInscriber();
         rendererBlockDecorativeVertical = new RendererBlockDecorativeVertical();
     }
 
@@ -317,11 +306,6 @@ public class RenderHandler {
         RenderingRegistry.registerBlockHandler(blockRenderer);
         RenderingRegistry.registerBlockHandler(rendererBlockGravitationalStabilizer);
         RenderingRegistry.registerBlockHandler(rendererBlockPipe);
-        RenderingRegistry.registerBlockHandler(rendererBlockChargingStation);
-        RenderingRegistry.registerBlockHandler(rendererBlockPatternStorage);
-        RenderingRegistry.registerBlockHandler(rendererBlockReplicator);
-        RenderingRegistry.registerBlockHandler(rendererBlockTritaniumCrate);
-        RenderingRegistry.registerBlockHandler(rendererBlockInscriber);
         RenderingRegistry.registerBlockHandler(rendererBlockDecorativeVertical);
     }
 
@@ -339,6 +323,7 @@ public class RenderHandler {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHoloSign.class, tileEntityRendererHoloSign);
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachinePacketQueue.class, tileEntityRendererPacketQueue);
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInscriber.class, tileEntityRendererInscriber);
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTritaniumCrate.class, tileEntityRendererTritaniumCrate);
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachineContractMarket.class, tileEntityRendererContractMarket);
     }
 

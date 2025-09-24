@@ -7,6 +7,7 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import matteroverdrive.MatterOverdrive;
 import matteroverdrive.client.RenderHandler;
 import matteroverdrive.client.render.HoloIcons;
+import matteroverdrive.client.render.IInventoryRender;
 import matteroverdrive.client.resources.data.WeaponMetadataSection;
 import matteroverdrive.client.resources.data.WeaponMetadataSectionSerializer;
 import matteroverdrive.compat.MatterOverdriveCompat;
@@ -22,7 +23,10 @@ import matteroverdrive.init.MatterOverdriveIcons;
 import matteroverdrive.init.MatterOverdriveItems;
 import matteroverdrive.starmap.GalaxyClient;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy {
@@ -39,6 +43,17 @@ public class ClientProxy extends CommonProxy {
         weaponHandler = new ClientWeaponHandler();
     }
 
+    //TODO:
+//    public void registerItemRenderer() {
+//		for (Object renderer : TileEntityRendererDispatcher.instance.mapSpecialRenderers.values()) {
+//			if (renderer instanceof IInventoryRender invRender) {
+//				for (Item item : invRender.getItemsForRenderer()) {
+//					MinecraftForgeClient.registerItemRenderer(item, invRender.getRenderer());
+//				}
+//			}
+//		}
+//    }
+    
     @Override
     public void registerProxies() {
         super.registerProxies();
