@@ -109,7 +109,7 @@ public class MatterOverdrive {
         MatterOverdriveBioticStats.init(event);
         matterRegistry.preInit(event, configHandler);
         UpdateTabs();
-
+        
         proxy.registerCompatModules();
         MatterOverdriveCompat.preInit(event);
     }
@@ -133,6 +133,9 @@ public class MatterOverdrive {
         MatterOverdriveBlocks.register(event);
         MatterOverdriveItems.register(event);
         MatterOverdriveFluids.register(event);
+        
+        proxy.registerItemRenderers();
+        
         MatterOverdriveBioticStats.register(event);
         MatterOverdriveBioticStats.registerAll(configHandler, MatterOverdrive.statRegistry);
         MatterOverdriveQuests.init(event);

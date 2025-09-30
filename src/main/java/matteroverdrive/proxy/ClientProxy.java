@@ -42,17 +42,17 @@ public class ClientProxy extends CommonProxy {
     public ClientProxy() {
         weaponHandler = new ClientWeaponHandler();
     }
-
-    //TODO:
-//    public void registerItemRenderer() {
-//		for (Object renderer : TileEntityRendererDispatcher.instance.mapSpecialRenderers.values()) {
-//			if (renderer instanceof IInventoryRender invRender) {
-//				for (Item item : invRender.getItemsForRenderer()) {
-//					MinecraftForgeClient.registerItemRenderer(item, invRender.getRenderer());
-//				}
-//			}
-//		}
-//    }
+    
+    @Override
+    public void registerItemRenderers() {
+        for (Object renderer : TileEntityRendererDispatcher.instance.mapSpecialRenderers.values()) {
+            if (renderer instanceof IInventoryRender invRender) {
+                for(Item item : invRender.getItemsForRenderer()) {
+                    MinecraftForgeClient.registerItemRenderer(item, invRender.getRenderer());
+                }
+            }
+        }
+    }
     
     @Override
     public void registerProxies() {

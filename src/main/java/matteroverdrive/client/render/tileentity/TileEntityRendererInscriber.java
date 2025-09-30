@@ -1,19 +1,25 @@
 package matteroverdrive.client.render.tileentity;
 
+import matteroverdrive.client.render.IInventoryRender;
+import matteroverdrive.client.render.ItemRenderBase;
 import static matteroverdrive.client.render.TE_Resource_Manager.INSCRIBER_MODEL;
 import static matteroverdrive.client.render.TE_Resource_Manager.INSCRIBER_TEXTURE;
+import matteroverdrive.init.MatterOverdriveBlocks;
 import matteroverdrive.init.MatterOverdriveItems;
 import matteroverdrive.tile.TileEntityInscriber;
 import matteroverdrive.util.RenderUtils;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
+import net.minecraftforge.client.IItemRenderer;
+import org.lwjgl.opengl.GL11;
 import static org.lwjgl.opengl.GL11.*;
 
-public class TileEntityRendererInscriber extends TileEntitySpecialRenderer {
+public class TileEntityRendererInscriber extends TileEntitySpecialRenderer implements IInventoryRender {
     
     private EntityItem item;
     
@@ -36,7 +42,6 @@ public class TileEntityRendererInscriber extends TileEntitySpecialRenderer {
             bindTexture(INSCRIBER_TEXTURE);
             INSCRIBER_MODEL.renderPart("base");
             
-            //GL11.glTranslated(0.5f, 0, 0.5f);
             RenderUtils.rotateFromBlock(tileEntity.getWorldObj(), tileEntity.xCoord, tileEntity.yCoord, tileEntity.zCoord);
             glPushMatrix();
             glTranslated(0, 0.6, headX);
@@ -64,5 +69,35 @@ public class TileEntityRendererInscriber extends TileEntitySpecialRenderer {
             }
             glPopMatrix();
         }
+    }
+    @Override
+    public Item getItemForRenderer() {
+        return Item.getItemFromBlock(MatterOverdriveBlocks.inscriber);
+    }
+    
+    @Override
+    public IItemRenderer getRenderer() {
+        return new ItemRenderBase() {
+            public void renderInventory() {
+                GL11.glTranslated(0, -1, 0);
+                GL11.glScaled(5, 5, 5);
+            }
+            public void renderCommon() {
+                GL11.glScaled(2, 2, 2);
+                GL11.glRotated(-90, 0, 1, 0);
+                
+                bindTexture(INSCRIBER_TEXTURE);
+                INSCRIBER_MODEL.renderPart("base");
+                
+                glPushMatrix();
+                glTranslated(0, 0.6, 0.02);
+                INSCRIBER_MODEL.renderPart("rail");
+                glPopMatrix();
+                
+                glPushMatrix();
+                glTranslated(0, 0.84, 0.02 - 0.06);
+                INSCRIBER_MODEL.renderPart("head");
+                glPopMatrix();
+            }};
     }
 }

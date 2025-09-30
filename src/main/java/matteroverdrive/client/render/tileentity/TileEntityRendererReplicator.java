@@ -1,21 +1,26 @@
 package matteroverdrive.client.render.tileentity;
 
+import matteroverdrive.client.render.IInventoryRender;
+import matteroverdrive.client.render.ItemRenderBase;
 import static matteroverdrive.client.render.TE_Resource_Manager.BASE_TEXTURE;
 import static matteroverdrive.client.render.TE_Resource_Manager.NETWORK_PORT_TEXTURE;
 import static matteroverdrive.client.render.TE_Resource_Manager.REPLICATOR_MODEL;
 import static matteroverdrive.client.render.TE_Resource_Manager.REPLICATOR_TEXTURE;
 import static matteroverdrive.client.render.TE_Resource_Manager.VENT_TEXTURE;
+import matteroverdrive.init.MatterOverdriveBlocks;
 import matteroverdrive.tile.TileEntityMachineReplicator;
 import matteroverdrive.util.RenderUtils;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 import static org.lwjgl.opengl.GL11.glTranslated;
 
-public class TileEntityRendererReplicator extends TileEntitySpecialRenderer {
+public class TileEntityRendererReplicator extends TileEntitySpecialRenderer implements IInventoryRender {
     EntityItem itemEntity;
 
     @Override
@@ -59,4 +64,36 @@ public class TileEntityRendererReplicator extends TileEntitySpecialRenderer {
             RenderManager.instance.renderEntityWithPosYaw(itemEntity, x + 0.5d, y + 0.25, z + 0.5, 0, 0);
         }
     }
+    
+    @Override
+    public Item getItemForRenderer() {
+        return Item.getItemFromBlock(MatterOverdriveBlocks.replicator);
+    }
+    
+    @Override
+    public IItemRenderer getRenderer() {
+        return new ItemRenderBase() {
+            public void renderInventory() {
+                GL11.glScaled(5, 5, 5);
+            }
+            public void renderCommon() {
+                GL11.glTranslated(0, 0.5, 0);
+                GL11.glScaled(2, 2, 2);
+                GL11.glRotated(90, 0, 1, 0);
+                
+                bindTexture(REPLICATOR_TEXTURE);
+                REPLICATOR_MODEL.renderPart("front");
+                REPLICATOR_MODEL.renderPart("inside");
+                
+                bindTexture(VENT_TEXTURE);
+                REPLICATOR_MODEL.renderPart("vents");
+                
+                bindTexture(BASE_TEXTURE);
+                REPLICATOR_MODEL.renderPart("shell");
+                
+                bindTexture(NETWORK_PORT_TEXTURE);
+                REPLICATOR_MODEL.renderPart("back");
+            }};
+    }
+    
 }

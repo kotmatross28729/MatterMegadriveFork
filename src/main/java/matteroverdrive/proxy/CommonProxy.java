@@ -18,7 +18,9 @@ public class CommonProxy {
     public CommonProxy() {
         commonWeaponHandler = new CommonWeaponHandler();
     }
-
+    
+    public void registerItemRenderers() {}
+    
     public void registerProxies() {
         MinecraftForge.EVENT_BUS.register(GalaxyServer.getInstance());
         MinecraftForge.EVENT_BUS.register(getWeaponHandler());
@@ -26,7 +28,7 @@ public class CommonProxy {
         MatterOverdrive.configHandler.subscribe(GalaxyServer.getInstance());
         MatterOverdrive.configHandler.subscribe(GalaxyServer.getInstance().getGalaxyGenerator());
     }
-
+    
     public void registerCompatModules() {
         MatterOverdriveCompat.registerModules();
     }

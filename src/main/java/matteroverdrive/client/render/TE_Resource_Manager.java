@@ -16,7 +16,6 @@ public class TE_Resource_Manager {
 	public static final IModelCustom INSCRIBER_MODEL = new MO_WavefrontObject(new ResourceLocation(Reference.MODEL_INSCRIBER)).asVBO();
 	public static final ResourceLocation INSCRIBER_TEXTURE = new ResourceLocation(Reference.PATH_BLOCKS + "inscriber.png");
 	
-	//TODO: Top lid brightness?
 	public static final IModelCustom PATTERN_STORAGE_MODEL = new MO_WavefrontObject(new ResourceLocation(Reference.MODEL_PATTERN_STORAGE)).asVBO();
 	public static final ResourceLocation PATTERN_STORAGE_TEXTURE = new ResourceLocation(Reference.PATH_BLOCKS + "pattern_storage.png");
 	

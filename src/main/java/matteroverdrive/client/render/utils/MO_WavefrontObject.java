@@ -22,7 +22,7 @@ import net.minecraftforge.client.model.obj.TextureCoordinate;
 import net.minecraftforge.client.model.obj.Vertex;
 
 /*
- * Taken from: https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT/blob/master/src/main/java/com/hbm/render/loader/HFRWavefrontObject.java#
+ * Taken from: https://github.com/HbmMods/Hbm-s-Nuclear-Tech-GIT/blob/master/src/main/java/com/hbm/render/loader/HFRWavefrontObject.java
  */
 public class MO_WavefrontObject implements IModelCustomNamed {
 	private static final Pattern vertexPattern = Pattern.compile("(v( (\\-){0,1}\\d+(\\.\\d+)?){3,4} *\\n)|(v( (\\-){0,1}\\d+(\\.\\d+)?){3,4} *$)");
