@@ -10,18 +10,16 @@ public class TE_Resource_Manager {
 	public static final ResourceLocation BASE_TEXTURE = new ResourceLocation(Reference.PATH_BLOCKS + "base.png");
 	public static final ResourceLocation NETWORK_PORT_TEXTURE = new ResourceLocation(Reference.PATH_BLOCKS + "network_port.png");
 	
-	//TODO: triangulation? (no VBO)
-	public static final IModelCustom CHARGING_STATION_MODEL = new MO_WavefrontObject(new ResourceLocation(Reference.MODEL_CHARGING_STATION));
+	public static final IModelCustom CHARGING_STATION_MODEL = new MO_WavefrontObject(new ResourceLocation(Reference.MODEL_CHARGING_STATION)).asVBO();
 	public static final ResourceLocation CHARGING_STATION_TEXTURE = new ResourceLocation(Reference.PATH_BLOCKS + "charging_station.png");
 	
 	public static final IModelCustom INSCRIBER_MODEL = new MO_WavefrontObject(new ResourceLocation(Reference.MODEL_INSCRIBER)).asVBO();
 	public static final ResourceLocation INSCRIBER_TEXTURE = new ResourceLocation(Reference.PATH_BLOCKS + "inscriber.png");
 	
-	//TODO: fucked up model, need fix
+	//TODO: Top lid brightness?
 	public static final IModelCustom PATTERN_STORAGE_MODEL = new MO_WavefrontObject(new ResourceLocation(Reference.MODEL_PATTERN_STORAGE)).asVBO();
 	public static final ResourceLocation PATTERN_STORAGE_TEXTURE = new ResourceLocation(Reference.PATH_BLOCKS + "pattern_storage.png");
 	
-	//TODO: z-fighting on vents
 	public static final IModelCustom REPLICATOR_MODEL = new MO_WavefrontObject(new ResourceLocation(Reference.MODEL_REPLICATOR)).asVBO();
 	public static final ResourceLocation REPLICATOR_TEXTURE = new ResourceLocation(Reference.PATH_BLOCKS + "replicator.png");
 	
