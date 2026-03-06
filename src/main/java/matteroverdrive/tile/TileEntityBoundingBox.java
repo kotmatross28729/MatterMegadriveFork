@@ -24,7 +24,7 @@ public class TileEntityBoundingBox extends TileEntity implements IMOTileEntity {
         if (tick == 80) { // update every 4 seconds (assuming 20 TPS)
             tick = 0;
 
-            if (!ownerPresent()) {
+            if (this.ownerPos == null || !ownerPresent()) {
                 worldObj.setBlockToAir(xCoord, yCoord, zCoord);
             }
 
